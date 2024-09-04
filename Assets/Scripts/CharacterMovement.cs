@@ -21,4 +21,6 @@ public class CharacterMovement : MonoBehaviour
         inputX = Vector3.ClampMagnitude(inputX, 1);
         character.Move(inputX * velocity * Time.deltaTime);
     }
+
+    
 }
