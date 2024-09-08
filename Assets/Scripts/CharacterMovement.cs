@@ -23,15 +23,13 @@ public class CharacterMovement : MonoBehaviour
         inputX = Vector3.ClampMagnitude(inputX, 1);
         character.Move(inputX * velocity * Time.deltaTime);
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log("colided");
 
-        if (collision.gameObject.CompareTag("Bisturi"))
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Bisturi")
         {
-            Destroy(this.gameObject);
             bisturi.SetActive(true);
-            Debug.Log("colided");
+            Destroy(other.gameObject);
         }
     }
 }

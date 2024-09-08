@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 530768305}
   m_Layer: 0
   m_Name: Bisturi
-  m_TagString: Untagged
+  m_TagString: Bisturi
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -315,7 +315,7 @@ Transform:
   m_GameObject: {fileID: 530768304}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.8625, y: 0.4179, z: 0}
+  m_LocalPosition: {x: 3.01, y: 0.85, z: 0}
   m_LocalScale: {x: 0.1378, y: 0.4701, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -347,7 +347,7 @@ Transform:
   m_GameObject: {fileID: 554460580}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.10425035, w: 0.99455106}
-  m_LocalPosition: {x: 0.44, y: 0.1, z: 0}
+  m_LocalPosition: {x: 0.44, y: 0.1, z: -0.08}
   m_LocalScale: {x: 0.1378, y: 0.4701, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -436,6 +436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bb1bf0de36c1f44d889aa05f5c0bb39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bisturi: {fileID: 554460580}
   velocity: 10
 --- !u!143 &1267175467
 CharacterController:
