@@ -6,11 +6,20 @@ using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
 using System;
+using UnityEngine.SceneManagement;
 
 public class MultiplayerPhoton : MonoBehaviourPunCallbacks
 {
+    private string roomName;
+    private Room room;
+    private GameObject player;
+
     [SerializeField]
     private TextMeshProUGUI userList;
+    [SerializeField]
+    private TextMeshProUGUI roomNameTxt;
+    [SerializeField]
+    private TMP_InputField roomInput;
 
     void Start()
     {
@@ -28,6 +37,47 @@ public class MultiplayerPhoton : MonoBehaviourPunCallbacks
     }
 
 
+    //  BOTOES
+
+    public void CreateRoomBTN()
+    {
+        Debug.Log("[MultiplayerPhoton] Entrando ou criando uma sala...");
+        RoomOptions roomOptions = new RoomOptions();
+        roomOptions.MaxPlayers = 2;
+        if (roomInput.text.Trim() == "")
+            roomName = PhotonNetwork.NickName.ToUpper() + " ROOM";
+        else
+            roomName = roomInput.text.Trim().ToUpper();
+        PhotonNetwork.JoinOrCreateRoom(roomName, roomOptions, null);
+        room = new Room(roomName, roomOptions);
+        roomInput.enabled = false;
+        roomInput.text = "";
+    }
+
+    public void LeaveRoomBTN()
+    {
+        PhotonNetwork.LeaveRoom();
+    }
+
+    public void StartBTN()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+
+    // FUNCOES
+
+    public void UpdateUserList()
+    {
+        userList.text = "";
+        foreach (Player player in PhotonNetwork.PlayerList)
+        {
+            userList.text += player.NickName + "\n";
+        }
+    }
+
+
+    // FUNCOES PHOTON
 
     public override void OnConnectedToMaster()
     {
@@ -48,10 +98,6 @@ public class MultiplayerPhoton : MonoBehaviourPunCallbacks
         //agora que estamos em um lobby
         //podemos entrar numa sala ou criar uma se for necessario
 
-        Debug.Log("[MultiplayerPhoton] Entrando ou criando uma sala...");
-        RoomOptions roomOptions = new RoomOptions();
-        roomOptions.MaxPlayers = 20;
-        PhotonNetwork.JoinOrCreateRoom("CapivaraRoom", roomOptions, null);
     }
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
@@ -64,14 +110,23 @@ public class MultiplayerPhoton : MonoBehaviourPunCallbacks
         Debug.Log("[MultiplayerPhoton] RoomListUpdate: " + log);
     }
 
+    public override void OnCreatedRoom()
+    {
+        //this.player.isHost = true;        <-------------
+    }
+
     public override void OnJoinedRoom()
     {
         //esse comando vai rodar quando EU entrar na sala
         Debug.Log("[MultiplayerPhoton] Entrei na sala!");
 
+        roomNameTxt.enabled = true;
+
+        roomNameTxt.text = room.Name;
+
         UpdateUserList();
 
-        //PhotonNetwork.Instantiate("Player", Vector3.zero, Quaternion.identity);
+        //this.player = PhotonNetwork.Instantiate("Player", Vector3.zero, Quaternion.identity);     <-------------
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
@@ -82,6 +137,16 @@ public class MultiplayerPhoton : MonoBehaviourPunCallbacks
         UpdateUserList();
     }
 
+    public override void OnLeftRoom()
+    {
+        Debug.Log("Eu sai da sala");
+        roomNameTxt.enabled = false;
+        roomInput.enabled = true;
+        roomName = "";
+        userList.text = "";
+        room = null;
+    }
+
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         //jogador saiu da sala
@@ -90,12 +155,4 @@ public class MultiplayerPhoton : MonoBehaviourPunCallbacks
         userList.text = userList.text.Replace(otherPlayer.NickName + "\n", "");
     }
 
-    public void UpdateUserList()
-    {
-        userList.text = "";
-        foreach (Player player in PhotonNetwork.PlayerList)
-        {
-            userList.text += player.NickName + "\n";
-        }
-    }
 }
