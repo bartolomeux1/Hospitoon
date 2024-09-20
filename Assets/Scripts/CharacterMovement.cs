@@ -8,6 +8,7 @@ public class CharacterMovement : MonoBehaviour
     private Vector3 inputX;
 
     public GameObject bisturi;
+    public GameObject siringa;
 
     public float velocity = 10.0f;
     // Start is called before the first frame update
@@ -29,7 +30,21 @@ public class CharacterMovement : MonoBehaviour
         if (other.gameObject.tag == "Bisturi")
         {
             bisturi.SetActive(true);
-            Destroy(other.gameObject);
+
+            if (siringa.activeSelf)
+            {
+                siringa.SetActive(false);
+            }
+        }
+
+        if (other.gameObject.tag == "Siringa")
+        {
+            siringa.SetActive(true);
+
+            if (bisturi.activeSelf)
+            {
+                bisturi.SetActive(false);
+            }
         }
     }
 }
