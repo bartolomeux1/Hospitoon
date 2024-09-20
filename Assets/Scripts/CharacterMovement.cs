@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 
-public class CharacterMovement : MonoBehaviour
+public class CharacterMovement : MonoBehaviourPunCallbacks
 {
     private CharacterController character;
     private Vector3 inputX;
@@ -11,15 +10,23 @@ public class CharacterMovement : MonoBehaviour
     public GameObject siringa;
 
     public float velocity = 10.0f;
-    // Start is called before the first frame update
+
     void Start()
     {
-        character = GetComponent<CharacterController>();    
+        character = GetComponent<CharacterController>();
+
+        // Verifica se o player não é controlado pelo cliente local
+        if (!photonView.IsMine)
+        {
+            Destroy(character); // Opcional: Destruir o controller para outros jogadores
+            return;
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
+        if (!photonView.IsMine) return;
+
         inputX = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         inputX = Vector3.ClampMagnitude(inputX, 1);
         character.Move(inputX * velocity * Time.deltaTime);
@@ -27,6 +34,8 @@ public class CharacterMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!photonView.IsMine) return; // Garante que apenas o player local pode interagir
+
         if (other.gameObject.tag == "Bisturi")
         {
             bisturi.SetActive(true);

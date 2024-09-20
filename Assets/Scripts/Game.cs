@@ -1,3 +1,4 @@
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,7 +34,14 @@ public class Game : MonoBehaviour
 
     void Start()
     {
-        // start task 1 after 5 seconds
+        // Instanciar o player na rede usando o Photon
+        if (PhotonNetwork.IsConnected)
+        {
+            // Certifique-se de que o prefab esteja localizado no Resources do Unity
+            PhotonNetwork.Instantiate("Player", pacienteSpawn.transform.position, Quaternion.identity);
+        }
+
+        // Start task 1 after 5 seconds
         Invoke("Task1", 5);
 
         // faz a barra começar em  0

@@ -59,12 +59,6 @@ public class MultiplayerPhoton : MonoBehaviourPunCallbacks
         PhotonNetwork.LeaveRoom();
     }
 
-    public void StartBTN()
-    {
-        SceneManager.LoadScene(1);
-    }
-
-
     // FUNCOES
 
     public void UpdateUserList()
