@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 663966862358549256}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.947529, w: 0.31966996}
-  m_LocalPosition: {x: 0.49, y: -0.02, z: 0}
+  m_LocalPosition: {x: 0.49, y: -0.02, z: -0.088}
   m_LocalScale: {x: 0.09880001, y: 0.12680002, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 7741386264543680454}
   - component: {fileID: 9003905426337711166}
   m_Layer: 0
-  m_Name: Siringa (1)
+  m_Name: SiringaMao
   m_TagString: Siringa
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: -8362047539583947695}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -341,7 +341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bisturi: {fileID: 663966862358549256}
-  siringa: {fileID: 0}
+  siringa: {fileID: 5202488870327970778}
   velocity: 10
 --- !u!114 &6988966244146066453
 MonoBehaviour:

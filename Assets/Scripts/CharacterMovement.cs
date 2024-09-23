@@ -38,6 +38,7 @@ public class CharacterMovement : MonoBehaviourPunCallbacks
 
         if (other.gameObject.tag == "Bisturi")
         {
+            Debug.Log("collected");
             bisturi.SetActive(true);
 
             if (siringa.activeSelf)

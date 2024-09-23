@@ -18,7 +18,6 @@ public class Game : MonoBehaviour
     public bool objective2Completed = false;
 
     bool task1Completed = false;
-    public SphereCollider macaCollider;
 
     ///vars eric
     [Header("Timer Setup")]
@@ -53,13 +52,16 @@ public class Game : MonoBehaviour
         TimerRun();
         FeedBackStatus();
 
-    }
-    public void Task1()
-    {
-        Instantiate(paciente1, pacienteSpawn.transform.position, pacienteSpawn.transform.rotation);
-        TaskUi1.SetActive(true);
-
-        isTimerRunning = true;
+        if (objective1Completed)
+        {
+            taskObject1Ui.SetActive(false);
+            taskObject1.SetActive(false);
+        }
+        if (objective2Completed)
+        {
+            taskObject2Ui.SetActive(false);
+            taskObject2.SetActive(false);
+        }
 
         if (objective1Completed && objective2Completed)
         {
@@ -70,24 +72,12 @@ public class Game : MonoBehaviour
             isTimerRunning = false;
         }
     }
-
-    private void OnTriggerEnter(Collider other)
+    public void Task1()
     {
-        if (other.gameObject.tag == "Player")
-        {
-            if (taskObject1.activeSelf)
-            {
-                taskObject1.SetActive(false);
-                taskObject1Ui.SetActive(false);
-                objective1Completed = true;
-            }
-            if (taskObject2.activeSelf)
-            {
-                taskObject2.SetActive(false);
-                taskObject2Ui.SetActive(false);
-                objective2Completed = true;
-            }
-        }
+        Instantiate(paciente1, pacienteSpawn.transform.position, pacienteSpawn.transform.rotation);
+        TaskUi1.SetActive(true);
+
+        isTimerRunning = true;
     }
 
     public void TimerRun()
