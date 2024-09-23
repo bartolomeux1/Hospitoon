@@ -604,7 +604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c71c0d268db920547914881fafb200cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  paciente1: {fileID: 4756772083665101705, guid: 1efc63f5c5e1915429e8506b0a04d7d9, type: 3}
+  paciente1: {fileID: 1965479323}
   pacienteSpawn: {fileID: 1479393749}
   TaskUi1: {fileID: 1281423223}
   taskObject1: {fileID: 1954588545}
