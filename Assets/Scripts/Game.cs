@@ -8,9 +8,6 @@ public class Game : MonoBehaviour
     public GameObject pacienteSpawn;
     public GameObject TaskUi1;
 
-    public GameObject taskObject1;
-    public GameObject taskObject2;
-
     public GameObject taskObject1Ui;
     public GameObject taskObject2Ui;
 
@@ -55,12 +52,10 @@ public class Game : MonoBehaviour
         if (objective1Completed)
         {
             taskObject1Ui.SetActive(false);
-            taskObject1.SetActive(false);
         }
         if (objective2Completed)
         {
             taskObject2Ui.SetActive(false);
-            taskObject2.SetActive(false);
         }
 
         if (objective1Completed && objective2Completed)

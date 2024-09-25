@@ -11,6 +11,11 @@ public class Paciente : MonoBehaviour
     public Game game;
     public Player player;
 
+    private void Start()
+    {
+        GetComponent<CharacterController>();
+    }
+
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Player")

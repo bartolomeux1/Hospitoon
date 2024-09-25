@@ -10,8 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3554886785820855739}
   - component: {fileID: 5444707933841603630}
-  - component: {fileID: 2619799479150070875}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BisturiMao
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,13 +25,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 663966862358549256}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.947529, w: 0.31966996}
-  m_LocalPosition: {x: 0.49, y: -0.02, z: -0.088}
-  m_LocalScale: {x: 0.09880001, y: 0.12680002, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.146, y: -0.309, z: -0.048}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1430543844679359299}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -142.714}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5444707933841603630
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -74,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 949af93e5ab278840a4c8a2b0e59cb8a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 62b8b60fdef0ac144bb8bec71357d3ec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -85,27 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!135 &2619799479150070875
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 663966862358549256}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 2
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5202488870327970778
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,8 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1254918156907121978}
   - component: {fileID: 7741386264543680454}
-  - component: {fileID: 9003905426337711166}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SiringaMao
   m_TagString: Siringa
   m_Icon: {fileID: 0}
@@ -132,13 +109,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5202488870327970778}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.06, z: 0}
-  m_LocalScale: {x: 0.023222711, y: 0.029783268, z: 1}
+  m_LocalRotation: {x: 0.70945495, y: 0.70451933, z: -0.0128171, w: -0.012727932}
+  m_LocalPosition: {x: 0.021, y: -0.187, z: -0.048}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1430543844679359299}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 182.07, z: 90.4}
 --- !u!212 &7741386264543680454
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -180,7 +157,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e08d2fd778af5624c8824cd390c228b7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4fd7104dcb5ac134ea3970301d040daa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -191,27 +168,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!135 &9003905426337711166
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5202488870327970778}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 2
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5207582362663381225
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,7 +182,7 @@ GameObject:
   - component: {fileID: 1430449716005069266}
   - component: {fileID: 6988966244146066453}
   - component: {fileID: -8362047539583947695}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -290,9 +246,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.96275425, a: 1}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: e1846c14a20d0f8478c3e4c3cc8c8d61, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
