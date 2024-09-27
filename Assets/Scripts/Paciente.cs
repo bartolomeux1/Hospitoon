@@ -5,38 +5,21 @@ using UnityEngine;
 
 public class Paciente : MonoBehaviour
 {
-    public GameObject task1Object1;
-    public GameObject task1Object2;
-
     public Game game;
-    public Player player;
 
-    private void Start()
-    {
-        GetComponent<CharacterController>();
-    }
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "SiringaMao")
         {
-            if (task1Object1.activeSelf)
-            {
-                game.objective1Completed = true;
-                task1Object1.SetActive(false);
-            }
-            if (task1Object2.activeSelf)
-            {
-                game.objective2Completed = true;
-                task1Object2.SetActive(false);
-            }
+            game.objective1Completed = true;
+            Debug.Log("completed");
         }
-    }
-    private void Update()
-    {
-        if (game.objective1Completed && game.objective2Completed)
+        if (collision.gameObject.tag == "BisturiMao")
         {
-            Destroy(gameObject);
+            game.objective2Completed = true;
+            Debug.Log("completed");
         }
+        //complete objective 1 if playe
     }
 }

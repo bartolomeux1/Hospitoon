@@ -9,7 +9,12 @@ public class CharacterMovement : MonoBehaviourPunCallbacks
     public GameObject bisturi;
     public GameObject siringa;
 
+    public bool siringaMao;
+    public bool bisturiMao;
+
     public float velocity = 10.0f;
+
+    public Game game;
 
     void Start()
     {
@@ -30,6 +35,15 @@ public class CharacterMovement : MonoBehaviourPunCallbacks
         inputX = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         inputX = Vector3.ClampMagnitude(inputX, 1);
         character.Move(inputX * velocity * Time.deltaTime);
+
+        if (game.objective1Completed)
+        {
+            siringa.SetActive(false);
+        }
+        if (game.objective2Completed)
+        {
+            bisturi.SetActive(false);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -40,21 +54,26 @@ public class CharacterMovement : MonoBehaviourPunCallbacks
         {
             Debug.Log("collected");
             bisturi.SetActive(true);
+            bisturiMao = true;
 
             if (siringa.activeSelf)
             {
                 siringa.SetActive(false);
+                siringaMao = false;
             }
         }
 
         if (other.gameObject.tag == "Siringa")
         {
             siringa.SetActive(true);
+            siringaMao = true;
 
             if (bisturi.activeSelf)
             {
                 bisturi.SetActive(false);
+                bisturiMao = false;
             }
         }
+        if (!photonView.IsMine) { }
     }
 }

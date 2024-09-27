@@ -8,6 +8,8 @@ TagManager:
   - Bullet
   - BisturiMao
   - Siringa
+  - SiringaMao
+  - Paciente
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - Items
   - 
   - Player
-  - 
+  - Paciente
   - 
   - 
   - 
