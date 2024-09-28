@@ -5,7 +5,10 @@ using UnityEngine.UI;
 public class Game : MonoBehaviour
 {
     public GameObject paciente1;
-    public GameObject pacienteSpawn;
+    public GameObject paciente1Spawn;
+    public GameObject paciente2;
+    public GameObject paciente2Spawn;
+
     public GameObject TaskUi1;
 
     public GameObject taskObject1Ui;
@@ -22,7 +25,7 @@ public class Game : MonoBehaviour
     public Text timerText;
     public Slider progressTimerText;
     private float timer = 0.0f;
-    public float maxTimer = 10f;
+    public float maxTimer = 60f;
     public GameObject feedback;
     public bool feedbackStatus;
     private bool isTimerRunning = false;
@@ -34,7 +37,7 @@ public class Game : MonoBehaviour
         if (PhotonNetwork.IsConnected)
         {
             // Certifique-se de que o prefab esteja localizado no Resources do Unity
-            PhotonNetwork.Instantiate("Player", pacienteSpawn.transform.position, Quaternion.identity);
+            PhotonNetwork.Instantiate("Player", paciente1Spawn.transform.position, Quaternion.identity);
         }
 
         // Start task 1 after 5 seconds
@@ -69,7 +72,7 @@ public class Game : MonoBehaviour
     }
     public void Task1()
     {
-        Instantiate(paciente1, pacienteSpawn.transform.position, pacienteSpawn.transform.rotation);
+        Instantiate(paciente1, paciente1Spawn.transform.position, paciente1Spawn.transform.rotation);
         TaskUi1.SetActive(true);
 
         isTimerRunning = true;
