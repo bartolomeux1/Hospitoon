@@ -7,19 +7,35 @@ public class Paciente : MonoBehaviour
 {
     public Game game;
 
-
+    public int paciente = 1;
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "SiringaMao")
+        
+        if(paciente == 1)
         {
-            game.objective1Completed = true;
-            Debug.Log("completed");
+            if (collision.gameObject.tag == "SiringaMao")
+            {
+                game.objective1Completed = true;
+                Debug.Log("completed");
+            }
+            if (collision.gameObject.tag == "BisturiMao")
+            {
+                game.objective2Completed = true;
+                Debug.Log("completed");
+            }
         }
-        if (collision.gameObject.tag == "BisturiMao")
+        if(paciente == 2)
         {
-            game.objective2Completed = true;
-            Debug.Log("completed");
+            if (collision.gameObject.tag == "SiringaMao")
+            {
+                game.objective1Completed2 = true;
+                Debug.Log("completed");
+            }
+            if (collision.gameObject.tag == "BisturiMao")
+            {
+                game.objective2Completed2 = true;
+                Debug.Log("completed");
+            }
         }
-        //complete objective 1 if playe
     }
 }

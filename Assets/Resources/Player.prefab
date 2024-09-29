@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5444707933841603630}
   - component: {fileID: 2262688606179624505}
   - component: {fileID: 1255349803363386501}
+  - component: {fileID: 8229632442187775038}
   m_Layer: 7
   m_Name: BisturiMao
   m_TagString: BisturiMao
@@ -134,6 +135,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8229632442187775038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663966862358549256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &5202488870327970778
 GameObject:
   m_ObjectHideFlags: 0
@@ -146,6 +163,7 @@ GameObject:
   - component: {fileID: 7741386264543680454}
   - component: {fileID: 1180506379952211127}
   - component: {fileID: 443635728019390708}
+  - component: {fileID: 6125192229159316173}
   m_Layer: 7
   m_Name: SiringaMao
   m_TagString: SiringaMao
@@ -268,6 +286,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6125192229159316173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5202488870327970778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &5207582362663381225
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,20 +4,37 @@ using UnityEngine.UI;
 
 public class Game : MonoBehaviour
 {
+    [Header("paciente gameobject")]
+
     public GameObject paciente1;
     public GameObject paciente1Spawn;
+    public GameObject pacient1clone;
+
     public GameObject paciente2;
     public GameObject paciente2Spawn;
+    public GameObject paciente2Clone;
 
-    public GameObject TaskUi1;
+    [Header("tasks ui")]
+
+    public GameObject taskUi1;
+    public GameObject taskUi2;
 
     public GameObject taskObject1Ui;
     public GameObject taskObject2Ui;
 
+    public GameObject task2Object1Ui;
+    public GameObject task2Object2Ui;
+
+    [Header("tasks booleans")]
+
     public bool objective1Completed = false;
     public bool objective2Completed = false;
 
-    bool task1Completed = false;
+    public bool objective1Completed2 = false;
+    public bool objective2Completed2 = false;
+
+    public bool task1Completed = false;
+    public bool task2Completed = false;
 
     ///vars eric
     [Header("Timer Setup")]
@@ -40,8 +57,8 @@ public class Game : MonoBehaviour
             PhotonNetwork.Instantiate("Player", paciente1Spawn.transform.position, Quaternion.identity);
         }
 
-        // Start task 1 after 5 seconds
-        Invoke("Task1", 5);
+        Invoke("Maca1Task1", 3);
+        Invoke("Maca2Task1", 3);
 
         // faz a barra começar em  0
         progressTimerText.value = 0;
@@ -52,30 +69,81 @@ public class Game : MonoBehaviour
         TimerRun();
         FeedBackStatus();
 
+        //maca 1
+
         if (objective1Completed)
         {
             taskObject1Ui.SetActive(false);
         }
+        else taskObject1Ui.SetActive(true);
+
         if (objective2Completed)
         {
             taskObject2Ui.SetActive(false);
         }
+        else taskObject2Ui.SetActive(true);
 
         if (objective1Completed && objective2Completed)
         {
             feedbackStatus = true;
             feedback.SetActive(true);
             task1Completed = true;
-            TaskUi1.SetActive(false);
-            isTimerRunning = false;
+            taskUi1.SetActive(false);
+            //isTimerRunning = false;
+        }
+        if (task1Completed)
+        {
+            Invoke("Maca1Task1", 3);
+            objective1Completed = false;
+            objective2Completed = false;
+            Destroy(pacient1clone);
+            task1Completed = false;
+        }
+
+        //maca 2
+
+        if (objective1Completed2)
+        {
+            task2Object1Ui.SetActive(false);
+        }
+        else task2Object1Ui.SetActive(true);
+
+        if (objective2Completed2)
+        {
+            task2Object2Ui.SetActive(false);
+        }
+        else task2Object2Ui.SetActive(true);
+
+        if(objective1Completed2 && objective2Completed2)
+        {
+            task2Completed = true;
+            taskUi2.SetActive(false);
+        }
+        if (task2Completed)
+        {
+            Invoke("Maca2Task1", 3);
+            objective1Completed2 = false;
+            objective2Completed2 = false;
+            Destroy(paciente2Clone);
+            task2Completed = false;
         }
     }
-    public void Task1()
+    public void Maca1Task1()
     {
         Instantiate(paciente1, paciente1Spawn.transform.position, paciente1Spawn.transform.rotation);
-        TaskUi1.SetActive(true);
+        taskUi1.SetActive(true);
 
         isTimerRunning = true;
+
+        pacient1clone = GameObject.Find("Paciente(Clone)");
+    }
+
+    public void Maca2Task1()
+    {
+        Instantiate(paciente2, paciente2Spawn.transform.position, paciente2Spawn.transform.rotation);
+        taskUi2.SetActive(true);
+
+        paciente2Clone = GameObject.Find("Paciente2(Clone)");
     }
 
     public void TimerRun()

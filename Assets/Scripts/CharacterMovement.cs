@@ -1,6 +1,7 @@
 using Photon.Pun;
 using UnityEngine;
-
+using System.Collections;
+using System.Collections.Generic;
 public class CharacterMovement : MonoBehaviourPunCallbacks
 {
     private CharacterController character;
@@ -36,14 +37,6 @@ public class CharacterMovement : MonoBehaviourPunCallbacks
         inputX = Vector3.ClampMagnitude(inputX, 1);
         character.Move(inputX * velocity * Time.deltaTime);
 
-        if (game.objective1Completed)
-        {
-            siringa.SetActive(false);
-        }
-        if (game.objective2Completed)
-        {
-            bisturi.SetActive(false);
-        }
     }
 
     private void OnTriggerEnter(Collider other)
