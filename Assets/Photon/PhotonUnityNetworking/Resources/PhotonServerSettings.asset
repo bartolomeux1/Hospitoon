@@ -44,6 +44,12 @@ MonoBehaviour:
   - ShowFeedback
   - StartTimer
   - StartGame
+  - CollectItem
+  - GoToMainMenu
+  - RestartGame
+  - RestartGameRPC
+  - RestartForAll
+  - LoadSceneForAll
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

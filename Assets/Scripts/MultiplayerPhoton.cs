@@ -131,8 +131,23 @@ public class MultiplayerPhoton : MonoBehaviourPunCallbacks
         UpdateUserList();
     }
 
+
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        // Exclui o jogador que saiu e avisa que todos devem ir ao lobby
+        Debug.Log("[MultiplayerPhoton] O jogador " + otherPlayer.NickName + " saiu da sala. Expulsando todos.");
+
+        // Deixa a sala e carrega a cena do lobby para todos os jogadores
+        PhotonNetwork.LeaveRoom();
+
+        userList.text = userList.text.Replace(otherPlayer.NickName + "\n", "");
+    }
+
     public override void OnLeftRoom()
     {
+        base.OnLeftRoom();
+        Debug.Log("[MultiplayerPhoton] Todos os jogadores foram expulsos e estão voltando ao lobby.");
+        PhotonNetwork.LoadLevel(0);
         Debug.Log("Eu sai da sala");
         roomNameTxt.enabled = false;
         roomInput.enabled = true;
@@ -140,13 +155,24 @@ public class MultiplayerPhoton : MonoBehaviourPunCallbacks
         userList.text = "";
         room = null;
     }
-
-    public override void OnPlayerLeftRoom(Player otherPlayer)
+    public void RestartGame()
     {
-        //jogador saiu da sala
-        base.OnPlayerLeftRoom(otherPlayer);
-
-        userList.text = userList.text.Replace(otherPlayer.NickName + "\n", "");
+        // Chama o RPC para reiniciar o jogo em todos os jogadores
+        photonView.RPC("RestartGameRPC", RpcTarget.All);
     }
+
+    [PunRPC]
+    public void RestartGameRPC()
+    {
+        // Carrega a cena atual para reiniciar o jogo
+        PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void MainMenu()
+    {
+        // Deixar a sala atual e voltar ao lobby
+        PhotonNetwork.LeaveRoom();
+    }
+
 
 }

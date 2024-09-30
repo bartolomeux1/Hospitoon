@@ -1,7 +1,6 @@
 using Photon.Pun;
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+
 public class CharacterMovement : MonoBehaviourPunCallbacks
 {
     private CharacterController character;
@@ -17,9 +16,20 @@ public class CharacterMovement : MonoBehaviourPunCallbacks
 
     public Game game;
 
+    // Adicione uma referência para a câmera
+    private CameraFollow cameraFollow;
+
     void Start()
     {
         character = GetComponent<CharacterController>();
+
+        // Localiza o script 'Game' na 'mainCamera'
+        GameObject cameraObj = GameObject.FindWithTag("MainCamera");
+        if (cameraObj != null)
+        {
+            game = cameraObj.GetComponent<Game>();
+            cameraFollow = cameraObj.GetComponent<CameraFollow>(); // Obtém a referência do script CameraFollow2D
+        }
 
         // Verifica se o player não é controlado pelo cliente local
         if (!photonView.IsMine)
@@ -27,27 +37,62 @@ public class CharacterMovement : MonoBehaviourPunCallbacks
             Destroy(character); // Opcional: Destruir o controller para outros jogadores
             return;
         }
+
+        // Atribui o jogador à câmera para que ela possa segui-lo
+        if (cameraFollow != null)
+        {
+            cameraFollow.target = transform; // Define o jogador como alvo da câmera
+        }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (!photonView.IsMine) return;
 
-        inputX = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        inputX = Vector3.ClampMagnitude(inputX, 1);
-        character.Move(inputX * velocity * Time.deltaTime);
-
+        if (game.feedbackStatus == false)
+        {
+            return;
+        }
+        else
+        {
+            inputX = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
+            inputX = Vector3.ClampMagnitude(inputX, 1);
+            character.Move(inputX * velocity * Time.deltaTime);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (!photonView.IsMine) return; // Garante que apenas o player local pode interagir
 
-        if (other.gameObject.tag == "Bisturi")
+        if (other.gameObject.CompareTag("Bisturi"))
         {
-            Debug.Log("collected");
+            Debug.Log("Collected bisturi");
+            photonView.RPC("CollectItem", RpcTarget.All, "Bisturi");
+        }
+
+        if (other.gameObject.CompareTag("Siringa"))
+        {
+            Debug.Log("Collected siringa");
+            photonView.RPC("CollectItem", RpcTarget.All, "Siringa");
+        }
+
+        // Verifica se colidiu com outro jogador
+        if (other.gameObject.CompareTag("Player") && other.gameObject != gameObject)
+        {
+            Vector3 pushDirection = (transform.position - other.transform.position).normalized;
+            character.Move(pushDirection * velocity * Time.deltaTime); // Afasta o jogador colidido
+        }
+    }
+
+    [PunRPC]
+    void CollectItem(string item)
+    {
+        if (item == "Bisturi")
+        {
             bisturi.SetActive(true);
             bisturiMao = true;
+            game.podeAddTimer = true;
 
             if (siringa.activeSelf)
             {
@@ -56,10 +101,11 @@ public class CharacterMovement : MonoBehaviourPunCallbacks
             }
         }
 
-        if (other.gameObject.tag == "Siringa")
+        if (item == "Siringa")
         {
             siringa.SetActive(true);
             siringaMao = true;
+            game.podeAddTimer = true;
 
             if (bisturi.activeSelf)
             {
@@ -67,6 +113,5 @@ public class CharacterMovement : MonoBehaviourPunCallbacks
                 bisturiMao = false;
             }
         }
-        if (!photonView.IsMine) { }
     }
 }

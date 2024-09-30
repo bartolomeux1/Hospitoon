@@ -316,6 +316,7 @@ GameObject:
   - component: {fileID: 1430449716005069266}
   - component: {fileID: 6988966244146066453}
   - component: {fileID: -8362047539583947695}
+  - component: {fileID: 7140096326350935805}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -332,7 +333,7 @@ Transform:
   m_GameObject: {fileID: 5207582362663381225}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.015, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -411,13 +412,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 0.66
-  m_Radius: 0.18
+  m_Height: 0.45
+  m_Radius: 0.12
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -0.09, z: 0}
 --- !u!114 &1430449716005069266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,7 +435,7 @@ MonoBehaviour:
   siringa: {fileID: 5202488870327970778}
   siringaMao: 0
   bisturiMao: 0
-  velocity: 10
+  velocity: 2
   game: {fileID: 0}
 --- !u!114 &6988966244146066453
 MonoBehaviour:
@@ -475,3 +476,24 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!65 &7140096326350935805
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5207582362663381225}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.20441788, y: 0.36408597, z: 0.2}
+  m_Center: {x: 0.007329732, y: -0.10742859, z: 0}
