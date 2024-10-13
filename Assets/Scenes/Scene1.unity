@@ -867,6 +867,7 @@ GameObject:
   - component: {fileID: 300970567}
   - component: {fileID: 300970566}
   - component: {fileID: 300970569}
+  - component: {fileID: 300970575}
   - component: {fileID: 300970570}
   - component: {fileID: 300970572}
   - component: {fileID: 300970573}
@@ -970,6 +971,7 @@ MonoBehaviour:
   paciente2: {fileID: 1635440833}
   paciente2Spawn: {fileID: 194690207}
   paciente2Clone: {fileID: 0}
+  taskManager: {fileID: 300970575}
   taskUi1: {fileID: 1281423223}
   taskUi2: {fileID: 16962250}
   taskObject1Ui: {fileID: 2137765964}
@@ -989,15 +991,17 @@ MonoBehaviour:
   pontuacaoGrandeText: {fileID: 894564810}
   progressTimerText: {fileID: 141750378}
   pontuacao: 0
-  maxTimer: 10
+  maxTimer: 15
   feedback: {fileID: 158911449}
   feedbackStatus: 0
+  isTimerRunning: 0
   move: {fileID: 0}
   sliderTime: {fileID: 141750378}
   corSlider: {r: 0, g: 0, b: 0, a: 0}
   imageFill: {fileID: 29148243}
   podeAddTimer: 0
-  players: []
+  players:
+  - {fileID: 0}
   checkSiringa: 0
   checkBisturi: 0
   restartButton: {fileID: 0}
@@ -1086,6 +1090,39 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &300970575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300970565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7214589348184c14f873f4eb6e04d40f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  game: {fileID: 300970569}
+  paciente1: {fileID: 1965479323}
+  paciente1Spawn: {fileID: 1479393749}
+  pacient1clone: {fileID: 0}
+  paciente2: {fileID: 1635440833}
+  paciente2Spawn: {fileID: 194690207}
+  paciente2Clone: {fileID: 0}
+  taskUi1: {fileID: 1281423223}
+  taskUi2: {fileID: 16962250}
+  taskObject1Ui: {fileID: 2137765964}
+  taskObject2Ui: {fileID: 830959980}
+  task2Object1Ui: {fileID: 906602522}
+  task2Object2Ui: {fileID: 1257868948}
+  objective1Completed: 0
+  objective2Completed: 0
+  objective1Completed2: 0
+  objective2Completed2: 0
+  task1Completed: 0
+  task2Completed: 0
+  checkSiringa: 0
+  checkBisturi: 0
 --- !u!1 &376862861
 GameObject:
   m_ObjectHideFlags: 0
@@ -3389,6 +3426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 300970569}
+  taskManager: {fileID: 300970575}
   paciente: 2
 --- !u!212 &1635440836
 SpriteRenderer:
@@ -3451,7 +3489,7 @@ Transform:
   m_GameObject: {fileID: 1635440833}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.15, y: -4.94, z: 0}
+  m_LocalPosition: {x: -1.563, y: -4.959, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -3684,6 +3722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 300970569}
+  taskManager: {fileID: 300970575}
   paciente: 1
 --- !u!212 &1965479326
 SpriteRenderer:

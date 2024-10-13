@@ -17,7 +17,9 @@ public class Game : MonoBehaviour
     public GameObject paciente2Spawn;
     public GameObject paciente2Clone;
 
-    [Header("tasks ui")]
+    [Header("tasks")]
+
+    public TaskManager taskManager;
 
     public GameObject taskUi1;
     public GameObject taskUi2;
@@ -52,7 +54,7 @@ public class Game : MonoBehaviour
     public float maxTimer = 60f;
     public GameObject feedback;
     public bool feedbackStatus;
-    private bool isTimerRunning = false;
+    public bool isTimerRunning = false;
     public CharacterMovement move;
     public Slider sliderTime;
     public Color corSlider;
@@ -68,15 +70,17 @@ public class Game : MonoBehaviour
     {
         pontuacaoGrande.SetActive(false);
         feedbackStatus = true;
+
+        
         // Instanciar o player na rede usando o Photon
         if (PhotonNetwork.IsConnected)
         {
             // Certifique-se de que o prefab esteja localizado no Resources do Unity
             PhotonNetwork.Instantiate("Player", paciente1Spawn.transform.position, Quaternion.identity);
         }
+        //Invoke("taskManager.Maca1Task1", 3);
+        //Invoke("taskManager.Maca2Task1", 3);
 
-        Invoke("Maca1Task1", 1);
-        Invoke("Maca2Task1", 3);
         imageFill = sliderTime.fillRect.GetComponent<Image>();
 
         players = new List<CharacterMovement>();
@@ -88,12 +92,12 @@ public class Game : MonoBehaviour
     {
         TimerRun();
         FeedBackStatus();
-        Macas();
+        taskManager.Tasks();
         pontuacaoGrandeText.text = "Pontuação: "+ pontuacao.ToString();
 
     }
-
-    public void Macas()
+    /*
+    public void Tasks()
     {
         //maca 1
 
@@ -178,7 +182,7 @@ public class Game : MonoBehaviour
 
         paciente2Clone = GameObject.Find("Paciente2(Clone)");
     }
-
+    */
     public void TimerRun()
     {
         if (isTimerRunning)
@@ -219,9 +223,9 @@ public class Game : MonoBehaviour
     }
 
 
-    public void AddTimer()
+    public void AddTimer(int addTimer)
     {
-        maxTimer += 3;
+        maxTimer += addTimer;
 
     }
 }

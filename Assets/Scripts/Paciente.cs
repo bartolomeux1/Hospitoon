@@ -6,6 +6,7 @@ using UnityEngine;
 public class Paciente : MonoBehaviour
 {
     public Game game;
+    public TaskManager taskManager;
 
 
     public int paciente = 1;
@@ -16,18 +17,18 @@ public class Paciente : MonoBehaviour
         {
             if (collision.gameObject.tag == "SiringaMao")
             {
-                game.objective1Completed = true;
+                taskManager.objective1Completed = true;
 
                 if (game.podeAddTimer == true)
                 {
-                    game.AddTimer(); //adiciona o tempo ao interagir com paciente
-                    if (game.checkBisturi == false)
+                    game.AddTimer(5); //adiciona o tempo ao interagir com paciente
+                    if (taskManager.checkBisturi == false)
                     {
 
                         game.AddPontuacao(3); //adiciona 3 na pontuação
-                        game.checkSiringa = true;
+                        taskManager.checkSiringa = true;
                     }
-                    if (game.checkBisturi == true) 
+                    if (taskManager.checkBisturi == true) 
                         game.AddPontuacao(7);
                 }
 
@@ -39,18 +40,18 @@ public class Paciente : MonoBehaviour
             }
             if (collision.gameObject.tag == "BisturiMao")
             {
-                game.objective2Completed = true;
+                taskManager.objective2Completed = true;
 
                 if (game.podeAddTimer == true)
                 {
-                    game.AddTimer(); //adiciona o tempo ao interagir com paciente
-                    if (game.checkSiringa == false)
+                    game.AddTimer(5); //adiciona o tempo ao interagir com paciente
+                    if (taskManager.checkSiringa == false)
                     {
 
                         game.AddPontuacao(3); //adiciona 3 na pontuação
-                        game.checkBisturi = true;
+                        taskManager.checkBisturi = true;
                     }
-                    if (game.checkSiringa == true)
+                    if (taskManager.checkSiringa == true)
                         game.AddPontuacao(7);
                 }
 
@@ -64,18 +65,18 @@ public class Paciente : MonoBehaviour
         {
             if (collision.gameObject.tag == "SiringaMao")
             {
-                game.objective1Completed2 = true;
+                taskManager.objective1Completed2 = true;
 
                 if (game.podeAddTimer == true)
                 {
-                    game.AddTimer(); //adiciona o tempo ao interagir com paciente
-                    if (game.checkBisturi == false)
+                    game.AddTimer(5); //adiciona o tempo ao interagir com paciente
+                    if (taskManager.checkBisturi == false)
                     {
 
                         game.AddPontuacao(3); //adiciona 3 na pontuação
-                        game.checkSiringa = true;
+                        taskManager.checkSiringa = true;
                     }
-                    if (game.checkBisturi == true)
+                    if (taskManager.checkBisturi == true)
                         game.AddPontuacao(7);
                 }
 
@@ -86,18 +87,18 @@ public class Paciente : MonoBehaviour
             }
             if (collision.gameObject.tag == "BisturiMao")
             {
-                game.objective2Completed2 = true;
+                taskManager.objective2Completed2 = true;
 
                 if (game.podeAddTimer == true)
                 {
-                    game.AddTimer(); //adiciona o tempo ao interagir com paciente
-                    if (game.checkSiringa == false)
+                    game.AddTimer(5); //adiciona o tempo ao interagir com paciente
+                    if (taskManager.checkSiringa == false)
                     {
 
                         game.AddPontuacao(3); //adiciona 3 na pontuação
-                        game.checkBisturi = true;
+                        taskManager.checkBisturi = true;
                     }
-                    if (game.checkSiringa == true)
+                    if (taskManager.checkSiringa == true)
                         game.AddPontuacao(7);
                 }
 
