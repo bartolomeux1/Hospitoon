@@ -40,6 +40,7 @@ public class Paciente : MonoBehaviour
             }
             if (collision.gameObject.tag == "BisturiMao")
             {
+                Debug.Log("completed");
                 taskManager.objective2Completed = true;
 
                 if (game.podeAddTimer == true)

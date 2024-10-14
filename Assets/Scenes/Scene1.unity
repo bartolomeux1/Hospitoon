@@ -867,6 +867,7 @@ GameObject:
   - component: {fileID: 300970567}
   - component: {fileID: 300970566}
   - component: {fileID: 300970569}
+  - component: {fileID: 300970576}
   - component: {fileID: 300970575}
   - component: {fileID: 300970570}
   - component: {fileID: 300970572}
@@ -971,7 +972,7 @@ MonoBehaviour:
   paciente2: {fileID: 1635440833}
   paciente2Spawn: {fileID: 194690207}
   paciente2Clone: {fileID: 0}
-  taskManager: {fileID: 300970575}
+  taskManager: {fileID: 300970576}
   taskUi1: {fileID: 1281423223}
   taskUi2: {fileID: 16962250}
   taskObject1Ui: {fileID: 2137765964}
@@ -1100,6 +1101,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7214589348184c14f873f4eb6e04d40f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &300970576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300970565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9982ae4b41079274a92a23a981b2581b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 300970569}
@@ -1566,6 +1579,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8362047539583947695, guid: 0f569b8d663ed6f41ac25359ff6e5653, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1430543844679359299, guid: 0f569b8d663ed6f41ac25359ff6e5653, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.8
@@ -3426,7 +3443,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 300970569}
-  taskManager: {fileID: 300970575}
+  taskManager: {fileID: 300970576}
   paciente: 2
 --- !u!212 &1635440836
 SpriteRenderer:
@@ -3722,7 +3739,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 300970569}
-  taskManager: {fileID: 300970575}
+  taskManager: {fileID: 300970576}
   paciente: 1
 --- !u!212 &1965479326
 SpriteRenderer:
