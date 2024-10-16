@@ -8,6 +8,9 @@ public class Paciente : MonoBehaviour
     public Game game;
     public TaskManager taskManager;
 
+    public string objectTag1;
+    public string objectTag2;
+
 
     public int paciente = 1;
     private void OnTriggerEnter(Collider collision)
@@ -15,7 +18,7 @@ public class Paciente : MonoBehaviour
 
         if (paciente == 1)
         {
-            if (collision.gameObject.tag == "SiringaMao")
+            if (collision.gameObject.tag == objectTag1)
             {
                 taskManager.objective1Completed = true;
 
@@ -38,7 +41,7 @@ public class Paciente : MonoBehaviour
 
                 Debug.Log("completed");
             }
-            if (collision.gameObject.tag == "BisturiMao")
+            if (collision.gameObject.tag == objectTag2)
             {
                 Debug.Log("completed");
                 taskManager.objective2Completed = true;
@@ -64,7 +67,7 @@ public class Paciente : MonoBehaviour
         }
         if (paciente == 2)
         {
-            if (collision.gameObject.tag == "SiringaMao")
+            if (collision.gameObject.tag == objectTag1)
             {
                 taskManager.objective1Completed2 = true;
 
@@ -86,7 +89,7 @@ public class Paciente : MonoBehaviour
                 collision.gameObject.SetActive(false);
                 Debug.Log("completed");
             }
-            if (collision.gameObject.tag == "BisturiMao")
+            if (collision.gameObject.tag == objectTag2)
             {
                 taskManager.objective2Completed2 = true;
 

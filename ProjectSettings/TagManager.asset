@@ -10,6 +10,8 @@ TagManager:
   - Siringa
   - SiringaMao
   - Paciente
+  - RemedioMao
+  - Remedio
   layers:
   - Default
   - TransparentFX

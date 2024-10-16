@@ -8,9 +8,11 @@ public class CharacterMovement : MonoBehaviourPunCallbacks
 
     public GameObject bisturi;
     public GameObject siringa;
+    public GameObject remedio;
 
     public bool siringaMao;
     public bool bisturiMao;
+    public bool remedioMao;
 
     public float velocity = 10.0f;
 
@@ -76,6 +78,10 @@ public class CharacterMovement : MonoBehaviourPunCallbacks
             Debug.Log("Collected siringa");
             photonView.RPC("CollectItem", RpcTarget.All, "Siringa");
         }
+        if (other.gameObject.CompareTag("Remedio"))
+        {
+            photonView.RPC("CollectItem", RpcTarget.All, "Remedio");
+        }
 
         // Verifica se colidiu com outro jogador
         if (other.gameObject.CompareTag("Player") && other.gameObject != gameObject)
@@ -99,6 +105,12 @@ public class CharacterMovement : MonoBehaviourPunCallbacks
                 siringa.SetActive(false);
                 siringaMao = false;
             }
+
+            if (remedio.activeSelf)
+            {
+                remedio.SetActive(false);
+                remedioMao = false;
+            }
         }
 
         if (item == "Siringa")
@@ -106,6 +118,29 @@ public class CharacterMovement : MonoBehaviourPunCallbacks
             siringa.SetActive(true);
             siringaMao = true;
             game.podeAddTimer = true;
+
+            if (bisturi.activeSelf)
+            {
+                bisturi.SetActive(false);
+                bisturiMao = false;
+            }
+            if (remedio.activeSelf)
+            {
+                remedio.SetActive(false);
+                remedioMao = false;
+            }
+        }
+        if (item == "Remedio")
+        {
+            remedio.SetActive(true);
+            remedioMao = true;
+            game.podeAddTimer = true;
+
+            if (siringa.activeSelf)
+            {
+                siringa.SetActive(false);
+                siringaMao = false;
+            }
 
             if (bisturi.activeSelf)
             {
