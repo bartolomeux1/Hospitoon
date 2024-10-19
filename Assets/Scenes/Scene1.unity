@@ -3552,6 +3552,11 @@ MonoBehaviour:
   taskManager: {fileID: 300970576}
   objectTag1: SiringaMao
   objectTag2: RemedioMao
+  objective1Completed: 0
+  objective2Completed: 0
+  taskCompleted: 0
+  nextPaciente: {fileID: 0}
+  pacienteSpawn: {fileID: 0}
   paciente: 2
 --- !u!212 &1635440836
 SpriteRenderer:
@@ -3850,6 +3855,11 @@ MonoBehaviour:
   taskManager: {fileID: 300970576}
   objectTag1: SiringaMao
   objectTag2: RemedioMao
+  objective1Completed: 0
+  objective2Completed: 0
+  taskCompleted: 0
+  nextPaciente: {fileID: 1965479323}
+  pacienteSpawn: {fileID: 1479393749}
   paciente: 1
 --- !u!212 &1965479326
 SpriteRenderer:

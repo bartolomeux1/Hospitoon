@@ -11,6 +11,13 @@ public class Paciente : MonoBehaviour
     public string objectTag1;
     public string objectTag2;
 
+    public bool objective1Completed = false;
+    public bool objective2Completed = false;
+
+    public bool taskCompleted = false;
+
+    public GameObject nextPaciente;
+    public GameObject pacienteSpawn;
 
     public int paciente = 1;
     private void OnTriggerEnter(Collider collision)
@@ -21,6 +28,7 @@ public class Paciente : MonoBehaviour
             if (collision.gameObject.tag == objectTag1)
             {
                 taskManager.objective1Completed = true;
+                objective1Completed = true;
 
                 if (game.podeAddTimer == true)
                 {
@@ -45,6 +53,7 @@ public class Paciente : MonoBehaviour
             {
                 Debug.Log("completed");
                 taskManager.objective2Completed = true;
+                objective2Completed = true;
 
                 if (game.podeAddTimer == true)
                 {
@@ -113,4 +122,21 @@ public class Paciente : MonoBehaviour
             }
         }
     }
+    /*private void Update()
+    {
+        if(objective1Completed && objective2Completed)
+        {
+            Invoke("NextTask", 3);
+            Destroy(gameObject);
+            
+
+        }
+    }
+    public void NextTask()
+    {
+        Instantiate(nextPaciente, pacienteSpawn.transform.position, pacienteSpawn.transform.rotation);
+        //taskUi1.SetActive(true);
+
+        game.isTimerRunning = true;
+    }*/
 }
