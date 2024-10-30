@@ -131,17 +131,20 @@ public class TaskManager : MonoBehaviour
         if (task1CompletedCouter > 3)
         {
             NewPaciente();
-            task1CompletedCouter = 0;
         }
     }
     public void Maca1Task1()
     {
+        Debug.Log("paciente 1 spawned");
         Instantiate(paciente1, paciente1Spawn.transform.position, paciente1Spawn.transform.rotation);
         taskUi1.SetActive(true);
 
         game.isTimerRunning = true;
 
-        pacient1clone = GameObject.Find("Paciente(Clone)");
+        if (task1CompletedCouter < 4)
+            pacient1clone = GameObject.Find("Paciente(Clone)");
+        else
+            pacient1clone = GameObject.Find("PacienteComSirurgia(Clone)");
     }
     public void Maca2Task1()
     {
@@ -155,5 +158,6 @@ public class TaskManager : MonoBehaviour
     {
         paciente1 = newPaciente;
         Debug.Log("NewPaciente");
+        task1CompletedCouter = 0;
     }
 }
