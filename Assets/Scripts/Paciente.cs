@@ -11,24 +11,23 @@ public class Paciente : MonoBehaviour
     public string objectTag1;
     public string objectTag2;
 
+    public GameObject taskObject1Ui;
+    public GameObject taskObject2Ui;
+
     public bool objective1Completed = false;
     public bool objective2Completed = false;
 
-    public bool taskCompleted = false;
-
     public GameObject nextPaciente;
-    public GameObject pacienteSpawn;
 
     public int paciente = 1;
     private void OnTriggerEnter(Collider collision)
     {
 
-        if (paciente == 1)
-        {
             if (collision.gameObject.tag == objectTag1)
             {
-                taskManager.objective1Completed = true;
+                //taskManager.objective1Completed = true;
                 objective1Completed = true;
+                taskObject1Ui.SetActive(false);
 
                 if (game.podeAddTimer == true)
                 {
@@ -52,8 +51,9 @@ public class Paciente : MonoBehaviour
             if (collision.gameObject.tag == objectTag2)
             {
                 Debug.Log("completed");
-                taskManager.objective2Completed = true;
+                //taskManager.objective2Completed = true;
                 objective2Completed = true;
+                taskObject2Ui.SetActive(false);
 
                 if (game.podeAddTimer == true)
                 {
@@ -73,6 +73,8 @@ public class Paciente : MonoBehaviour
                 collision.gameObject.SetActive(false);
                 Debug.Log("completed");
             }
+        /*if (paciente == 1)
+        {
         }
         if (paciente == 2)
         {
@@ -120,23 +122,22 @@ public class Paciente : MonoBehaviour
                 collision.gameObject.SetActive(false);
                 Debug.Log("completed");
             }
-        }
+        }*/
     }
-    /*private void Update()
+    private void Update()
     {
         if(objective1Completed && objective2Completed)
         {
-            Invoke("NextTask", 3);
-            Destroy(gameObject);
-            
-
+            if(paciente == 1)
+            taskManager.task1Completed = true;
+            if (paciente == 2)
+                taskManager.task2Completed = true;
         }
+            
     }
-    public void NextTask()
+    /*public void NewPaciente()
     {
-        Instantiate(nextPaciente, pacienteSpawn.transform.position, pacienteSpawn.transform.rotation);
-        //taskUi1.SetActive(true);
-
-        game.isTimerRunning = true;
+        taskManager.paciente1 = nextPaciente;
+        Debug.Log("NewPaciente");
     }*/
 }

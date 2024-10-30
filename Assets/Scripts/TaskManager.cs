@@ -16,6 +16,8 @@ public class TaskManager : MonoBehaviour
     public GameObject paciente2Spawn;
     public GameObject paciente2Clone;
 
+    public GameObject newPaciente;
+
     [Header("tasks")]
 
     public GameObject taskUi1;
@@ -26,6 +28,9 @@ public class TaskManager : MonoBehaviour
 
     public GameObject task2Object1Ui;
     public GameObject task2Object2Ui;
+
+    public int task1CompletedCouter;
+    public int task2CompletedCouter;
 
     [Header("tasks booleans")]
 
@@ -86,6 +91,8 @@ public class TaskManager : MonoBehaviour
             objective2Completed = false;
             Destroy(pacient1clone);
             task1Completed = false;
+            task1CompletedCouter++;
+
         }
 
         //maca 2
@@ -119,6 +126,12 @@ public class TaskManager : MonoBehaviour
             objective2Completed2 = false;
             Destroy(paciente2Clone);
             task2Completed = false;
+            task2CompletedCouter++;
+        }
+        if (task1CompletedCouter > 3)
+        {
+            NewPaciente();
+            task1CompletedCouter = 0;
         }
     }
     public void Maca1Task1()
@@ -136,5 +149,11 @@ public class TaskManager : MonoBehaviour
         taskUi2.SetActive(true);
 
         paciente2Clone = GameObject.Find("Paciente2(Clone)");
+    }
+
+    public void NewPaciente()
+    {
+        paciente1 = newPaciente;
+        Debug.Log("NewPaciente");
     }
 }
