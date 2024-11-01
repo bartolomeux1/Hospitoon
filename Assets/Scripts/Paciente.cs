@@ -5,8 +5,12 @@ using UnityEngine;
 
 public class Paciente : MonoBehaviour
 {
+    public bool HassSirurgia;
+
     public Game game;
     public TaskManager taskManager;
+
+    public GameObject sirurgiaMiniGame;
 
     public string objectTag1;
     public string objectTag2;
@@ -73,65 +77,23 @@ public class Paciente : MonoBehaviour
                 collision.gameObject.SetActive(false);
                 Debug.Log("completed");
             }
-        /*if (paciente == 1)
-        {
-        }
-        if (paciente == 2)
-        {
-            if (collision.gameObject.tag == objectTag1)
-            {
-                taskManager.objective1Completed2 = true;
-
-                if (game.podeAddTimer == true)
-                {
-                    game.AddTimer(5); //adiciona o tempo ao interagir com paciente
-                    if (taskManager.checkBisturi == false)
-                    {
-
-                        game.AddPontuacao(3); //adiciona 3 na pontuação
-                        taskManager.checkSiringa = true;
-                    }
-                    if (taskManager.checkBisturi == true)
-                        game.AddPontuacao(7);
-                }
-
-                game.podeAddTimer = false; // faz com que seja adicionado apenas uma vez
-
-                collision.gameObject.SetActive(false);
-                Debug.Log("completed");
-            }
-            if (collision.gameObject.tag == objectTag2)
-            {
-                taskManager.objective2Completed2 = true;
-
-                if (game.podeAddTimer == true)
-                {
-                    game.AddTimer(5); //adiciona o tempo ao interagir com paciente
-                    if (taskManager.checkSiringa == false)
-                    {
-
-                        game.AddPontuacao(3); //adiciona 3 na pontuação
-                        taskManager.checkBisturi = true;
-                    }
-                    if (taskManager.checkSiringa == true)
-                        game.AddPontuacao(7);
-                }
-
-                game.podeAddTimer = false; // faz com que seja adicionado apenas uma vez
-
-                collision.gameObject.SetActive(false);
-                Debug.Log("completed");
-            }
-        }*/
     }
     private void Update()
     {
         if(objective1Completed && objective2Completed)
         {
-            if(paciente == 1)
-            taskManager.task1Completed = true;
-            if (paciente == 2)
-                taskManager.task2Completed = true;
+            if (HassSirurgia == false)
+            {
+                if (paciente == 1)
+                    taskManager.task1Completed = true;
+                if (paciente == 2)
+                    taskManager.task2Completed = true;
+                Destroy(gameObject);
+            }
+            if (HassSirurgia)
+            {
+
+            }
         }
             
     }
