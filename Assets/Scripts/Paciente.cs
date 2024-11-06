@@ -6,6 +6,7 @@ using UnityEngine;
 public class Paciente : MonoBehaviour
 {
     public bool HassSirurgia;
+    public bool SirurgiaCompleted;
 
     public Game game;
     public TaskManager taskManager;
@@ -20,6 +21,7 @@ public class Paciente : MonoBehaviour
 
     public bool objective1Completed = false;
     public bool objective2Completed = false;
+    public bool taskCompleted = false;
 
     public GameObject nextPaciente;
 
@@ -77,11 +79,22 @@ public class Paciente : MonoBehaviour
                 collision.gameObject.SetActive(false);
                 Debug.Log("completed");
             }
+            if (taskCompleted)
+            if (HassSirurgia)
+            {
+                if (collision.gameObject.tag == "Player")
+                {
+                    sirurgiaMiniGame.SetActive(true);
+                }
+                else
+                    sirurgiaMiniGame.SetActive(false);
+            }
     }
     private void Update()
     {
         if(objective1Completed && objective2Completed)
         {
+            taskCompleted = true;
             if (HassSirurgia == false)
             {
                 if (paciente == 1)
@@ -92,7 +105,14 @@ public class Paciente : MonoBehaviour
             }
             if (HassSirurgia)
             {
-
+                if (SirurgiaCompleted)
+                {
+                    if (paciente == 1)
+                        taskManager.task1Completed = true;
+                    if (paciente == 2)
+                        taskManager.task2Completed = true;
+                    Destroy(gameObject);
+                }
             }
         }
             
