@@ -44,8 +44,7 @@ public class Game : MonoBehaviour
         // Instanciar o player na rede usando o Photon
         if (PhotonNetwork.IsConnected)
         {
-            // Certifique-se de que o prefab esteja localizado no Resources do Unity
-            PhotonNetwork.Instantiate("Player", playerSpawn.transform.position, Quaternion.identity);
+          
         }
         //Invoke("taskManager.Maca1Task1", 3);
         //Invoke("taskManager.Maca2Task1", 3);

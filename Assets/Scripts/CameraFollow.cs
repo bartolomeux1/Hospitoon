@@ -7,7 +7,7 @@ public class CameraFollow : MonoBehaviour
     public float smoothSpeed = 0.125f; // A velocidade de suavização do movimento da câmera
 
     // BoxCollider2D para limites
-    public BoxCollider2D boundary; // Arraste o collider para essa variável no Inspector
+    public PolygonCollider2D boundary; // Arraste o collider para essa variável no Inspector
 
     void LateUpdate()
     {

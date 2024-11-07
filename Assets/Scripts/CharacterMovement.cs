@@ -26,7 +26,7 @@ public class CharacterMovement : MonoBehaviourPunCallbacks
         character = GetComponent<CharacterController>();
 
         // Localiza o script 'Game' na 'mainCamera'
-        GameObject cameraObj = GameObject.FindWithTag("MainCamera");
+        GameObject cameraObj = GameObject.FindWithTag("Scripts");
         if (cameraObj != null)
         {
             game = cameraObj.GetComponent<Game>();

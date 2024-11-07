@@ -12,6 +12,7 @@ TagManager:
   - Paciente
   - RemedioMao
   - Remedio
+  - Scripts
   layers:
   - Default
   - TransparentFX
