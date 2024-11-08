@@ -45,6 +45,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         }
     }
 
+
     [PunRPC]
     void StartGame()
     {
@@ -69,8 +70,16 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     // Chama quando outro jogador entra na sala
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
+        // Verifique se temos exatamente dois jogadores na sala
+        if (PhotonNetwork.CurrentRoom.PlayerCount == 2)
+        {
+            // Apenas o jogador MasterClient chama o RPC para iniciar o jogo
+            if (PhotonNetwork.IsMasterClient)
+            {
+                photonView.RPC("StartGame", RpcTarget.All);
+            }
+        }
         Debug.Log("[LobbyManager] Jogador entrou na sala: " + newPlayer.NickName);
-        // Atualiza o botão de Start quando um novo jogador entra na sala (no Master Client)
         UpdateStartButtonState();
     }
 

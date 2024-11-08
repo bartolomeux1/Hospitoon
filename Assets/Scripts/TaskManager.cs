@@ -1,5 +1,7 @@
 
 using JetBrains.Annotations;
+using Photon.Pun;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -69,19 +71,18 @@ public class TaskManager : MonoBehaviour
     public Image emojisImage2;
     public Slider timerSlider;
     public Slider timerSlider2;
+
+   public PhotonView photonView;
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("Maca1Task1", 3);
-        Invoke("Maca2Task1", 5);
+        if (PhotonNetwork.IsMasterClient)
+        {
+            photonView.RPC("StartMaca2Task", RpcTarget.AllBuffered);
+            photonView.RPC("StartMaca1Task", RpcTarget.AllBuffered);
+        }
         paciente1Backup = paciente1;
         Paciente2Backup = paciente2;
-    }
-
-    // Update is called once per frame
-    private void FixedUpdate()
-    {
-        Tasks();
     }
 
     public void Update()
@@ -91,48 +92,97 @@ public class TaskManager : MonoBehaviour
         if ( !task2Completed)
             TimerMaca2();
 
-        if (paciente.proximoPaciente1)
+        if (paciente.proximoPaciente1 && PhotonNetwork.IsMasterClient)
         {
-            Invoke("Maca1Task1", Random.Range(2, 5));
+            photonView.RPC("StartMaca1Task", RpcTarget.All);
             task1Completed = false;
             paciente.proximoPaciente1 = false;
             
 
         }
 
-        if (paciente.proximoPaciente2)
+        if (paciente.proximoPaciente2 && PhotonNetwork.IsMasterClient)
         {
-            Invoke("Maca2Task1", Random.Range(2, 7));
+            photonView.RPC("StartMaca2Task", RpcTarget.All);
             task2Completed = false;
             paciente.proximoPaciente2 = false;
-            
+
         }
     }
+    [PunRPC]
+    void StartMaca1Task()
+    {
+        double currentTime = PhotonNetwork.Time;
+        double taskStartTime = currentTime + 2.0; // espera de 2 segundos
 
+        StartCoroutine(WaitAndExecuteTask(taskStartTime));
+    }
+    [PunRPC]
+    void StartMaca2Task()
+    {
+        Debug.Log("Chamando StartMaca2Task");
+        double currentTime = PhotonNetwork.Time;
+        double taskStartTime = currentTime + 3.0; // espera de 3 segundos
+
+        StartCoroutine(WaitAndExecuteTask2(taskStartTime));
+    }
+    IEnumerator WaitAndExecuteTask(double startTime)
+    {
+        while (PhotonNetwork.Time < startTime)
+        {
+            yield return null; // espera até o tempo de início
+        }
+
+        Maca1Task1();
+    }
+    IEnumerator WaitAndExecuteTask2(double startTime)
+    {
+        Debug.Log("Iniciando a espera em WaitAndExecuteTask2");
+        while (PhotonNetwork.Time < startTime)
+        {
+            yield return null; // espera até o tempo de início
+        }
+        Debug.Log("Executando Maca2Task1");
+        Maca2Task1();
+    }
     private void TimerMaca1()
     {
         if (!pauseTimer1)
         {
             if (timerAtual1 > 0)
             {
-                timerAtual1 -= 1 * Time.deltaTime;
-                timerSlider.value = timerAtual1;
+                timerAtual1 -= Time.deltaTime;
+                timerSlider.value = (float)timerAtual1;
 
                 UpdateEmoji1();
 
-
-                // Quando o timer chega a 0, destrói o objeto
+                // Quando o timer chega a 0, destrói o objeto em ambos os clientes
                 if (timerAtual1 <= 0)
                 {
-                    Destroy(paciente1Clone);
-                    paciente1Clone = null;
-                    paciente.proximoPaciente1 = true;
+                    photonView.RPC("DestroyPaciente1", RpcTarget.AllBuffered);
                 }
             }
-            if (pauseTimer1)
-                timerAtual1 = timerAtual1;
         }
-
+    }
+    [PunRPC]
+    void DestroyPaciente1()
+    {
+        if (paciente1Clone != null)
+        {
+            Destroy(paciente1Clone);
+            paciente1Clone = null;
+            paciente.proximoPaciente1 = true;
+        }
+    }
+    [PunRPC]
+    void DestroyPaciente2()
+    {
+        if (paciente2Clone != null)
+        {
+            Destroy(paciente2Clone);
+            paciente2Clone = null;
+            paciente.proximoPaciente2 = true;
+        }
     }
     private void TimerMaca2()
     {
@@ -149,9 +199,7 @@ public class TaskManager : MonoBehaviour
                 // Quando o timer chega a 0, destrói o objeto
                 if (timerAtual2 <= 0)
                 {
-                    Destroy(paciente2Clone);
-                    paciente2Clone = null;
-                    paciente.proximoPaciente2 = true;
+                    photonView.RPC("DestroyPaciente2", RpcTarget.AllBuffered);
                 }
             }
             if (pauseTimer2)
@@ -189,14 +237,14 @@ public class TaskManager : MonoBehaviour
         else if (timerAtual2 <= 0)
             emojisImage2.sprite = emojis[4];
     }
-    public void Tasks()
+    public void Tasks() //game usa pra rodar tasks.
     {
         //maca 1
         if (task1Completed)
         {
             checkSiringa = false;
             checkBisturi = false;
-            Invoke("Maca1Task1", Random.Range(1,5));
+            paciente.proximoPaciente1 = true;
             task1Completed = false;
             task1CompletedCouter++;
 
@@ -206,7 +254,7 @@ public class TaskManager : MonoBehaviour
         {
             checkSiringa = false;
             checkBisturi = false;
-            Invoke("Maca2Task1", Random.Range(2, 7));
+            paciente.proximoPaciente2 = true;
             task2Completed = false;
             task2CompletedCouter++;
         }
@@ -226,7 +274,6 @@ public class TaskManager : MonoBehaviour
     public void Maca1Task1()
     {
 
-
         if (paciente2Clone != null)
             Destroy(paciente2Clone);
 
@@ -242,10 +289,10 @@ public class TaskManager : MonoBehaviour
     }
     public void Maca2Task1()
     {
+        Debug.Log("Instanciando Maca2Task1");
         if (paciente2Clone != null)
-        {
-            Destroy(paciente1Clone);
-        }
+            Destroy(paciente2Clone);
+        
         
         paciente2Clone = Instantiate(paciente2, paciente2Spawn.transform.position, paciente2Spawn.transform.rotation);
         pauseTimer2 = false;

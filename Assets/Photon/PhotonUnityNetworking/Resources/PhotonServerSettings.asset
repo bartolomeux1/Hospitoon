@@ -50,6 +50,14 @@ MonoBehaviour:
   - RestartGameRPC
   - RestartForAll
   - LoadSceneForAll
+  - InvokeMaca1Task1
+  - Maca1Task1
+  - InvokeMaca2Task
+  - Maca2Task1
+  - StartMaca1Task
+  - DestroyPaciente1
+  - DestroyPaciente2
+  - StartMaca2Task
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

@@ -1837,6 +1837,8 @@ MonoBehaviour:
   task2Completed: 0
   checkSiringa: 0
   checkBisturi: 0
+  pauseTimer1: 0
+  pauseTimer2: 0
   timerMaca1: 12
   timerMaca2: 12
   emojis:
@@ -1849,6 +1851,7 @@ MonoBehaviour:
   emojisImage2: {fileID: 418788504}
   timerSlider: {fileID: 1902974136}
   timerSlider2: {fileID: 1068230194}
+  photonView: {fileID: 300970573}
 --- !u!1 &311554614
 GameObject:
   m_ObjectHideFlags: 0

@@ -45,8 +45,6 @@ public class Game : MonoBehaviour
 
         maxTimer = 5000f;
        
-        //Invoke("taskManager.Maca1Task1", 3);
-        //Invoke("taskManager.Maca2Task1", 3);
 
         imageFill = sliderTime.fillRect.GetComponent<Image>();
 
