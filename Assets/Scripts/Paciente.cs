@@ -24,12 +24,14 @@ public class Paciente : MonoBehaviour
     public bool taskCompleted = false;
 
     public GameObject nextPaciente;
+    public bool proximoPaciente1 = false;
+    public bool proximoPaciente2 = false;
 
     public int paciente = 1;
     private void OnTriggerEnter(Collider collision)
     {
 
-            if (collision.gameObject.tag == objectTag1)
+            if (collision.gameObject.tag == objectTag1) //siringa...
             {
                 //taskManager.objective1Completed = true;
                 objective1Completed = true;
@@ -54,7 +56,7 @@ public class Paciente : MonoBehaviour
 
                 Debug.Log("completed");
             }
-            if (collision.gameObject.tag == objectTag2)
+            if (collision.gameObject.tag == objectTag2) //remedio...
             {
                 Debug.Log("completed");
                 //taskManager.objective2Completed = true;
@@ -92,15 +94,24 @@ public class Paciente : MonoBehaviour
     }
     private void Update()
     {
-        if(objective1Completed && objective2Completed)
+        if(objective1Completed && objective2Completed) //usar os dois itens...
         {
             taskCompleted = true;
+            
             if (HassSirurgia == false)
             {
                 if (paciente == 1)
+                {
                     taskManager.task1Completed = true;
+                    proximoPaciente1 = true;
+                    taskManager.pauseTimer1 = true;
+                }
                 if (paciente == 2)
+                {
                     taskManager.task2Completed = true;
+                    proximoPaciente2 = true;
+                    taskManager.pauseTimer2 = true;
+                }
                 Destroy(gameObject);
             }
             if (HassSirurgia)
@@ -108,14 +119,23 @@ public class Paciente : MonoBehaviour
                 if (SirurgiaCompleted)
                 {
                     if (paciente == 1)
+                    {
                         taskManager.task1Completed = true;
+                        proximoPaciente1 = true;
+                        taskManager.pauseTimer1 = true;
+                    }
                     if (paciente == 2)
+                    {
                         taskManager.task2Completed = true;
+                        proximoPaciente2 = true;
+                        taskManager.pauseTimer2 = true;
+                    }    
                     Destroy(gameObject);
                 }
             }
-        }
             
+        }
+
     }
     /*public void NewPaciente()
     {

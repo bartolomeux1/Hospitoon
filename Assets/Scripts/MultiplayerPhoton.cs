@@ -120,6 +120,7 @@ public class MultiplayerPhoton : MonoBehaviourPunCallbacks
 
         UpdateUserList();
 
+
         //this.player = PhotonNetwork.Instantiate("Player", Vector3.zero, Quaternion.identity);     <-------------
     }
 

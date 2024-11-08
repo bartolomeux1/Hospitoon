@@ -380,14 +380,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6108198012810b2418b1f516861c99a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HassSirurgia: 0
+  SirurgiaCompleted: 0
   game: {fileID: 0}
   taskManager: {fileID: 0}
+  sirurgiaMiniGame: {fileID: 0}
   objectTag1: SiringaMao
   objectTag2: RemedioMao
   taskObject1Ui: {fileID: 4004744199863438493}
   taskObject2Ui: {fileID: 3579094763019320206}
   objective1Completed: 0
   objective2Completed: 0
+  taskCompleted: 0
   nextPaciente: {fileID: 0}
   paciente: 1
 --- !u!135 &6477670794758522773
