@@ -19,7 +19,7 @@ public class CharacterMovement : MonoBehaviourPunCallbacks
     public Game game;
 
     // Adicione uma referência para a câmera
-    private CameraFollow cameraFollow;
+    
 
     void Start()
     {
@@ -30,7 +30,7 @@ public class CharacterMovement : MonoBehaviourPunCallbacks
         if (cameraObj != null)
         {
             game = cameraObj.GetComponent<Game>();
-            cameraFollow = cameraObj.GetComponent<CameraFollow>(); // Obtém a referência do script CameraFollow2D
+            // Obtém a referência do script CameraFollow2D
         }
 
         // Verifica se o player não é controlado pelo cliente local
@@ -38,12 +38,6 @@ public class CharacterMovement : MonoBehaviourPunCallbacks
         {
             Destroy(character); // Opcional: Destruir o controller para outros jogadores
             return;
-        }
-
-        // Atribui o jogador à câmera para que ela possa segui-lo
-        if (cameraFollow != null)
-        {
-            cameraFollow.target = transform; // Define o jogador como alvo da câmera
         }
     }
 

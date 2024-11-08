@@ -35,17 +35,16 @@ public class Game : MonoBehaviour
 
     public GameObject restartButton;
     public GameObject mainMenuButton;
+
+
     void Start()
     {
+
         pontuacaoGrande.SetActive(false);
         feedbackStatus = true;
 
-        
-        // Instanciar o player na rede usando o Photon
-        if (PhotonNetwork.IsConnected)
-        {
-          
-        }
+        maxTimer = 5000f;
+       
         //Invoke("taskManager.Maca1Task1", 3);
         //Invoke("taskManager.Maca2Task1", 3);
 
