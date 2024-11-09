@@ -36,7 +36,20 @@ public class Paciente : MonoBehaviour
             //taskManager.objective1Completed = true;
             objective1Completed = true;
             taskObject1Ui.SetActive(false);
-
+            if (pacienteInt == 1)
+            {
+                if (taskManager.timerAtual1 > 10 && taskManager.timerAtual1 < 12)
+                    taskManager.timerAtual1 = 12;
+                else
+                    taskManager.timerAtual1 += 2;
+            }
+            if (pacienteInt == 2)
+            {
+                if (taskManager.timerAtual2 > 10 && taskManager.timerAtual2 < 12)
+                    taskManager.timerAtual2 = 12;
+                else
+                    taskManager.timerAtual2 += 2;
+            }
             if (game.podeAddTimer == true)
             {
                 game.AddTimer(5); //adiciona o tempo ao interagir com paciente
@@ -63,6 +76,20 @@ public class Paciente : MonoBehaviour
             objective2Completed = true;
             taskObject2Ui.SetActive(false);
 
+            if (pacienteInt == 1)
+            {
+                if (taskManager.timerAtual1 > 10 && taskManager.timerAtual1 < 12)
+                    taskManager.timerAtual1 = 12;
+                else
+                    taskManager.timerAtual1 += 2;
+            }
+            if (pacienteInt == 2)
+            {
+                if (taskManager.timerAtual2 > 10 && taskManager.timerAtual2 < 12)
+                    taskManager.timerAtual2 = 12;
+                else
+                    taskManager.timerAtual2 += 2;
+            }
             if (game.podeAddTimer == true)
             {
                 game.AddTimer(5); //adiciona o tempo ao interagir com paciente

@@ -62,8 +62,8 @@ public class TaskManager : MonoBehaviour
     public bool pauseTimer1 = false;
     public bool pauseTimer2 = false;
     private float timerSpawn;
-    private float timerAtual1;
-    private float timerAtual2;
+    public float timerAtual1;
+    public float timerAtual2;
     public float timerMaca1 = 12;
     public float timerMaca2 = 12;
     public Sprite[] emojis;
