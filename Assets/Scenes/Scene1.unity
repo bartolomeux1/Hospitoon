@@ -2578,7 +2578,7 @@ MonoBehaviour:
   nextPaciente: {fileID: 1224242390}
   proximoPaciente1: 0
   proximoPaciente2: 0
-  paciente: 2
+  pacienteInt: 2
 --- !u!212 &390817376
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2938,7 +2938,7 @@ MonoBehaviour:
   nextPaciente: {fileID: 1224242390}
   proximoPaciente1: 0
   proximoPaciente2: 0
-  paciente: 2
+  pacienteInt: 0
 --- !u!212 &426644090
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6554,7 +6554,7 @@ MonoBehaviour:
   nextPaciente: {fileID: 1224242390}
   proximoPaciente1: 0
   proximoPaciente2: 0
-  paciente: 1
+  pacienteInt: 0
 --- !u!212 &1275183328
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9198,7 +9198,7 @@ MonoBehaviour:
   nextPaciente: {fileID: 1224242390}
   proximoPaciente1: 0
   proximoPaciente2: 0
-  paciente: 1
+  pacienteInt: 1
 --- !u!212 &1965479326
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10136,6 +10136,10 @@ PrefabInstance:
     - target: {fileID: 321678044775760319, guid: 858035b6609aab241953cfccbf964b42, type: 3}
       propertyPath: objectTag2
       value: RemedioMao
+      objectReference: {fileID: 0}
+    - target: {fileID: 321678044775760319, guid: 858035b6609aab241953cfccbf964b42, type: 3}
+      propertyPath: pacienteInt
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 340668321078265708, guid: 858035b6609aab241953cfccbf964b42, type: 3}
       propertyPath: m_LocalScale.x

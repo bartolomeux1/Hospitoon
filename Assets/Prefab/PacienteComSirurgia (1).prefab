@@ -390,6 +390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HassSirurgia: 0
+  SirurgiaCompleted: 0
   game: {fileID: 0}
   taskManager: {fileID: 0}
   sirurgiaMiniGame: {fileID: 0}
@@ -399,8 +400,11 @@ MonoBehaviour:
   taskObject2Ui: {fileID: 8051109128616930237}
   objective1Completed: 0
   objective2Completed: 0
+  taskCompleted: 0
   nextPaciente: {fileID: 0}
-  paciente: 1
+  proximoPaciente1: 0
+  proximoPaciente2: 0
+  pacienteInt: 2
 --- !u!135 &8215556999873927644
 SphereCollider:
   m_ObjectHideFlags: 0

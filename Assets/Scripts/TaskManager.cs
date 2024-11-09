@@ -163,6 +163,8 @@ public class TaskManager : MonoBehaviour
                 }
             }
         }
+        if (pauseTimer1)
+            timerAtual1 = timerAtual1;
     }
     [PunRPC]
     void DestroyPaciente1()
@@ -274,8 +276,8 @@ public class TaskManager : MonoBehaviour
     public void Maca1Task1()
     {
 
-        if (paciente2Clone != null)
-            Destroy(paciente2Clone);
+        if (paciente1Clone != null)
+            Destroy(paciente1Clone);
 
         paciente1Clone = Instantiate(paciente1, paciente1Spawn.transform.position, paciente1Spawn.transform.rotation);
         

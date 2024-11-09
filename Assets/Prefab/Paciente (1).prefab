@@ -393,7 +393,9 @@ MonoBehaviour:
   objective2Completed: 0
   taskCompleted: 0
   nextPaciente: {fileID: 0}
-  paciente: 1
+  proximoPaciente1: 0
+  proximoPaciente2: 0
+  pacienteInt: 1
 --- !u!135 &6477670794758522773
 SphereCollider:
   m_ObjectHideFlags: 0
