@@ -278,6 +278,7 @@ public class TaskManager : MonoBehaviour
             Destroy(paciente2Clone);
 
         paciente1Clone = Instantiate(paciente1, paciente1Spawn.transform.position, paciente1Spawn.transform.rotation);
+        
         game.isTimerRunning = true;
         pauseTimer1 = false;
 
@@ -292,9 +293,10 @@ public class TaskManager : MonoBehaviour
         Debug.Log("Instanciando Maca2Task1");
         if (paciente2Clone != null)
             Destroy(paciente2Clone);
-        
-        
+
+
         paciente2Clone = Instantiate(paciente2, paciente2Spawn.transform.position, paciente2Spawn.transform.rotation);
+        
         pauseTimer2 = false;
 
         timerAtual2 = timerMaca2;

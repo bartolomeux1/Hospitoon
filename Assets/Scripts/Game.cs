@@ -1,5 +1,6 @@
 using Photon.Pun;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,9 +15,9 @@ public class Game : MonoBehaviour
     [Header("Timer Setup")]
     public Text txtFeedback;
     public Text timerText;
-    public Text pontuacaoText;
+    public TextMeshProUGUI pontuacaoText;
     public GameObject pontuacaoGrande;
-    public Text pontuacaoGrandeText;
+    public TextMeshProUGUI pontuacaoGrandeText;
     public Slider progressTimerText;
     private float timer = 0.0f;
     public float pontuacao;
@@ -43,7 +44,7 @@ public class Game : MonoBehaviour
         pontuacaoGrande.SetActive(false);
         feedbackStatus = true;
 
-        maxTimer = 5000f;
+        maxTimer = 30f;
        
 
         imageFill = sliderTime.fillRect.GetComponent<Image>();
@@ -58,14 +59,14 @@ public class Game : MonoBehaviour
         TimerRun();
         FeedBackStatus();
         taskManager.Tasks();
-        pontuacaoGrandeText.text = "Pontuação: "+ pontuacao.ToString();
+        pontuacaoGrandeText.text = "Voce fez: "+ pontuacao.ToString() + " pontos.";
 
     }
     public void TimerRun()
     {
         if (isTimerRunning)
         {
-            timer = 10;
+            timer = 30;
             maxTimer -= Time.deltaTime;
 
             // Atualiza o valor do timer no texto

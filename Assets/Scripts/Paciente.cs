@@ -27,7 +27,7 @@ public class Paciente : MonoBehaviour
     public bool proximoPaciente1 = false;
     public bool proximoPaciente2 = false;
 
-    public int paciente = 1;
+    public int pacienteInt = 0;
     private void OnTriggerEnter(Collider collision)
     {
 
@@ -43,11 +43,11 @@ public class Paciente : MonoBehaviour
                     if (taskManager.checkBisturi == false)
                     {
 
-                        game.AddPontuacao(3); //adiciona 3 na pontuação
+                        game.AddPontuacao(2); //adiciona 3 na pontuação
                         taskManager.checkSiringa = true;
                     }
                     if (taskManager.checkBisturi == true) 
-                        game.AddPontuacao(7);
+                        game.AddPontuacao(3);
                 }
 
                 game.podeAddTimer = false; // faz com que seja adicionado apenas uma vez
@@ -69,11 +69,11 @@ public class Paciente : MonoBehaviour
                     if (taskManager.checkSiringa == false)
                     {
 
-                        game.AddPontuacao(3); //adiciona 3 na pontuação
+                        game.AddPontuacao(2); //adiciona 3 na pontuação
                         taskManager.checkBisturi = true;
                     }
                     if (taskManager.checkSiringa == true)
-                        game.AddPontuacao(7);
+                        game.AddPontuacao(3);
                 }
 
                 game.podeAddTimer = false; // faz com que seja adicionado apenas uma vez
@@ -81,7 +81,6 @@ public class Paciente : MonoBehaviour
                 collision.gameObject.SetActive(false);
                 Debug.Log("completed");
             }
-            if (taskCompleted)
             if (HassSirurgia)
             {
                 if (collision.gameObject.tag == "Player")
@@ -94,19 +93,19 @@ public class Paciente : MonoBehaviour
     }
     private void Update()
     {
-        if(objective1Completed && objective2Completed) //usar os dois itens...
+        if (objective1Completed && objective2Completed) //usar os dois itens...
         {
             taskCompleted = true;
-            
+
             if (HassSirurgia == false)
             {
-                if (paciente == 1)
+                if (pacienteInt == 1)
                 {
                     taskManager.task1Completed = true;
                     proximoPaciente1 = true;
                     taskManager.pauseTimer1 = true;
                 }
-                if (paciente == 2)
+                if (pacienteInt == 2)
                 {
                     taskManager.task2Completed = true;
                     proximoPaciente2 = true;
@@ -118,22 +117,24 @@ public class Paciente : MonoBehaviour
             {
                 if (SirurgiaCompleted)
                 {
-                    if (paciente == 1)
+                    if (pacienteInt == 1)
                     {
                         taskManager.task1Completed = true;
                         proximoPaciente1 = true;
                         taskManager.pauseTimer1 = true;
                     }
-                    if (paciente == 2)
+                    if (pacienteInt == 2)
                     {
                         taskManager.task2Completed = true;
                         proximoPaciente2 = true;
                         taskManager.pauseTimer2 = true;
-                    }    
+                    }
                     Destroy(gameObject);
                 }
             }
-            
+
+
+
         }
 
     }
