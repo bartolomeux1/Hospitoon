@@ -21,8 +21,8 @@ public class TaskManager : MonoBehaviour
     public GameObject newPaciente;
     public GameObject newPaciente2;
 
-    private GameObject paciente1Backup;
-    private GameObject Paciente2Backup;
+    public GameObject paciente1Backup;
+    public GameObject Paciente2Backup;
 
 
     private GameObject paciente1Clone; // Referência para o clone de paciente1
@@ -264,14 +264,16 @@ public class TaskManager : MonoBehaviour
         {
             NewPaciente1();
             task1CanceledCouter++;
+            timerMaca1 = +20;
         }
         if(task2CompletedCouter > 3) 
         { 
             NewPaciente2(); 
             task2CanceledCouter++;
+            timerMaca2 = + 20;
         }
-        if((task1CompletedCouter == 1) && (paciente1 == newPaciente)) { BackuPaciente1(); }
-        if((task2CompletedCouter == 1) && (paciente2 == newPaciente2)) { BackuPaciente2(); }
+        if((task1CompletedCouter > 1)) { BackuPaciente1(); }
+        if((task2CompletedCouter > 1)) { BackuPaciente2(); }
     }
     public void Maca1Task1()
     {
@@ -281,6 +283,8 @@ public class TaskManager : MonoBehaviour
 
         paciente1Clone = Instantiate(paciente1, paciente1Spawn.transform.position, paciente1Spawn.transform.rotation);
         
+        //Instantiate(paciente1, paciente1Spawn.transform.position, paciente1Spawn.transform.rotation);
+
         game.isTimerRunning = true;
         pauseTimer1 = false;
 
@@ -294,11 +298,13 @@ public class TaskManager : MonoBehaviour
     {
         Debug.Log("Instanciando Maca2Task1");
         if (paciente2Clone != null)
-            Destroy(paciente2Clone);
+        Destroy(paciente2Clone);
 
 
         paciente2Clone = Instantiate(paciente2, paciente2Spawn.transform.position, paciente2Spawn.transform.rotation);
-        
+
+        Instantiate(paciente2, paciente2Spawn.transform.position, paciente2Spawn.transform.rotation);
+
         pauseTimer2 = false;
 
         timerAtual2 = timerMaca2;
@@ -323,6 +329,7 @@ public class TaskManager : MonoBehaviour
     public void BackuPaciente1()
     {
         paciente1 = paciente1Backup;
+        Debug.Log("BackupPaciente1");
     }
     public void BackuPaciente2()
     {

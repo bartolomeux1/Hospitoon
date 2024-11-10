@@ -14,9 +14,14 @@ public class CharacterMovement : MonoBehaviourPunCallbacks
     public bool bisturiMao;
     public bool remedioMao;
 
+    private Animator animController;
+    private GameObject graphicPlayer;
+    private SpriteRenderer spriteRenderer;
+
     public float velocity = 10.0f;
 
     public Game game;
+    public SirurgiaMinigame sirurgiaMinigame;
 
     // Adicione uma referência para a câmera
     
@@ -24,6 +29,14 @@ public class CharacterMovement : MonoBehaviourPunCallbacks
     void Start()
     {
         character = GetComponent<CharacterController>();
+        // find the animator component in graphicPlayer
+        animController = GameObject.Find("GraphicPlayer").GetComponent<Animator>();
+        graphicPlayer = GameObject.Find("GraphicPlayer");
+        animController.SetBool("Idle", true);
+        animController.SetBool("WalkUp", false);
+        animController.SetBool("WalkDown", false);
+        animController.SetBool("WalkSide", false);
+        spriteRenderer = graphicPlayer.GetComponent<SpriteRenderer>();
 
         // Localiza o script 'Game' na 'mainCamera'
         GameObject cameraObj = GameObject.FindWithTag("Scripts");
@@ -54,6 +67,40 @@ public class CharacterMovement : MonoBehaviourPunCallbacks
             inputX = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
             inputX = Vector3.ClampMagnitude(inputX, 1);
             character.Move(inputX * velocity * Time.deltaTime);
+
+            if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+            {
+                animController.SetBool("Idle", false);
+                animController.SetBool("WalkUp", false);
+                animController.SetBool("WalkDown", false);
+                animController.SetBool("WalkSide", false);
+                if (Input.GetKey(KeyCode.W))
+                {
+                    animController.SetBool("WalkUp", true);
+                }
+                if (Input.GetKey(KeyCode.S))
+                {
+                    animController.SetBool("WalkDown", true);
+                }
+                if (Input.GetKey(KeyCode.A))
+                {
+                    animController.SetBool("WalkSide", true);
+                    spriteRenderer.flipX = true;
+                }
+                if (Input.GetKey(KeyCode.D))
+                {
+                    animController.SetBool("WalkSide", true);
+                    spriteRenderer.flipX = false;
+                }
+            }
+            else
+            {
+                animController.SetBool("Idle", true);
+                animController.SetBool("WalkUp", false);
+                animController.SetBool("WalkDown", false);
+                animController.SetBool("WalkSide", false);
+                spriteRenderer.flipX = false;
+            }
         }
     }
 

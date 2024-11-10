@@ -554,7 +554,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 606f848b0360ef645aa716c096226f0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sirurgiaMinigame: {fileID: 957988629}
+  sirurgiaMinigame: {fileID: 0}
   Task1: 0
   Task2: 1
   Task3: 0
@@ -1421,7 +1421,6 @@ GameObject:
   m_Component:
   - component: {fileID: 225169798}
   - component: {fileID: 225169797}
-  - component: {fileID: 225169796}
   - component: {fileID: 225169799}
   m_Layer: 0
   m_Name: MainCamera
@@ -1430,14 +1429,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &225169796
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 225169795}
-  m_Enabled: 1
 --- !u!20 &225169797
 Camera:
   m_ObjectHideFlags: 0
@@ -1788,6 +1779,7 @@ GameObject:
   - component: {fileID: 300970570}
   - component: {fileID: 300970572}
   - component: {fileID: 300970573}
+  - component: {fileID: 300970577}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: Scripts
@@ -1925,6 +1917,8 @@ MonoBehaviour:
   paciente2Spawn: {fileID: 194690207}
   newPaciente: {fileID: 1275183325}
   newPaciente2: {fileID: 426644087}
+  paciente1Backup: {fileID: 0}
+  Paciente2Backup: {fileID: 0}
   taskUi1: {fileID: 1281423223}
   taskUi2: {fileID: 16962250}
   taskObject1Ui: {fileID: 2137765964}
@@ -1960,6 +1954,41 @@ MonoBehaviour:
   timerSlider: {fileID: 1902974136}
   timerSlider2: {fileID: 1068230194}
   photonView: {fileID: 300970573}
+--- !u!114 &300970577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300970565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8150cb7bfb039974ab7fb307a213f167, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  taskManager: {fileID: 300970576}
+  game: {fileID: 300970569}
+  task1: {fileID: 869595036}
+  task2: {fileID: 1355705279}
+  task3: {fileID: 814914869}
+  sirurgiaMinigame: {fileID: 797564447}
+  objective: {fileID: 62720245}
+  sirurgiaCompleted: 0
+  sirurgiaFailed: 0
+  cutpoints1: 0
+  stitchPoints: 0
+  stitchPoints2: 0
+  objective1Started: 1
+  objective2Started: 0
+  objective3Started: 0
+  objective1Completed: 0
+  objective2Completed: 0
+  objective3Completed: 0
+  button1task1: {fileID: 391013769}
+  button2task1: {fileID: 997124682}
+  button3task1: {fileID: 1944696386}
+  button4task1: {fileID: 722613080}
+  button5task1: {fileID: 1999228794}
 --- !u!1 &311554614
 GameObject:
   m_ObjectHideFlags: 0
@@ -2093,7 +2122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 606f848b0360ef645aa716c096226f0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sirurgiaMinigame: {fileID: 957988629}
+  sirurgiaMinigame: {fileID: 0}
   Task1: 0
   Task2: 1
   Task3: 0
@@ -2371,7 +2400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 606f848b0360ef645aa716c096226f0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sirurgiaMinigame: {fileID: 957988629}
+  sirurgiaMinigame: {fileID: 0}
   Task1: 0
   Task2: 1
   Task3: 0
@@ -2631,6 +2660,7 @@ GameObject:
   - component: {fileID: 390817376}
   - component: {fileID: 390817375}
   - component: {fileID: 390817374}
+  - component: {fileID: 390817378}
   m_Layer: 0
   m_Name: Paciente2
   m_TagString: Paciente
@@ -2657,7 +2687,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.65
+  m_Radius: 0.8
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &390817375
 MonoBehaviour:
@@ -2675,7 +2705,8 @@ MonoBehaviour:
   SirurgiaCompleted: 0
   game: {fileID: 300970569}
   taskManager: {fileID: 300970576}
-  sirurgiaMiniGame: {fileID: 0}
+  sirurgiaMiniGameObj: {fileID: 797564447}
+  sirurgiaMiniGame: {fileID: 300970577}
   objectTag1: SiringaMao
   objectTag2: RemedioMao
   taskObject1Ui: {fileID: 1152635811}
@@ -2755,6 +2786,27 @@ Transform:
   - {fileID: 265029284}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &390817378
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 390817373}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4d76c24d52bbc7a4d9638127028e9376, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &391013769
 GameObject:
   m_ObjectHideFlags: 0
@@ -2900,7 +2952,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 606f848b0360ef645aa716c096226f0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sirurgiaMinigame: {fileID: 957988629}
+  sirurgiaMinigame: {fileID: 300970577}
   Task1: 0
   Task2: 0
   Task3: 0
@@ -2991,6 +3043,7 @@ GameObject:
   - component: {fileID: 426644090}
   - component: {fileID: 426644089}
   - component: {fileID: 426644088}
+  - component: {fileID: 426644092}
   m_Layer: 0
   m_Name: PacienteComSirurgia2
   m_TagString: Paciente
@@ -3017,7 +3070,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.65
+  m_Radius: 0.8
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &426644089
 MonoBehaviour:
@@ -3031,11 +3084,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6108198012810b2418b1f516861c99a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HassSirurgia: 1
+  HassSirurgia: 0
   SirurgiaCompleted: 0
   game: {fileID: 300970569}
   taskManager: {fileID: 300970576}
-  sirurgiaMiniGame: {fileID: 797564447}
+  sirurgiaMiniGameObj: {fileID: 797564447}
+  sirurgiaMiniGame: {fileID: 300970577}
   objectTag1: SiringaMao
   objectTag2: BisturiMao
   taskObject1Ui: {fileID: 1020257722}
@@ -3115,6 +3169,27 @@ Transform:
   - {fileID: 1775343249}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &426644092
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426644087}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4d76c24d52bbc7a4d9638127028e9376, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &427767743
 GameObject:
   m_ObjectHideFlags: 0
@@ -3966,7 +4041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 606f848b0360ef645aa716c096226f0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sirurgiaMinigame: {fileID: 957988629}
+  sirurgiaMinigame: {fileID: 0}
   Task1: 0
   Task2: 1
   Task3: 0
@@ -4115,7 +4190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 606f848b0360ef645aa716c096226f0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sirurgiaMinigame: {fileID: 957988629}
+  sirurgiaMinigame: {fileID: 300970577}
   Task1: 0
   Task2: 0
   Task3: 0
@@ -4264,7 +4339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 606f848b0360ef645aa716c096226f0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sirurgiaMinigame: {fileID: 957988629}
+  sirurgiaMinigame: {fileID: 0}
   Task1: 0
   Task2: 1
   Task3: 0
@@ -4401,7 +4476,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -4.0023193}
+  m_AnchoredPosition: {x: 0, y: -4.00235}
   m_SizeDelta: {x: -391.62, y: -208.1207}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &797564449
@@ -4870,7 +4945,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 493, y: 16}
+  m_AnchoredPosition: {x: 493, y: 16.00003}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &869595036
@@ -5299,73 +5374,6 @@ Transform:
   - {fileID: 2008390446}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &957988628
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 957988630}
-  - component: {fileID: 957988629}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &957988629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 957988628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8150cb7bfb039974ab7fb307a213f167, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  taskManager: {fileID: 300970576}
-  game: {fileID: 300970569}
-  task1: {fileID: 869595036}
-  task2: {fileID: 1355705279}
-  task3: {fileID: 814914869}
-  sirurgiaMinigame: {fileID: 0}
-  objective: {fileID: 62720245}
-  sirurgiaCompleted: 0
-  sirurgiaFailed: 0
-  cutpoints1: 0
-  stitchPoints: 0
-  stitchPoints2: 0
-  objective1Started: 1
-  objective2Started: 0
-  objective3Started: 0
-  objective1Completed: 0
-  objective2Completed: 0
-  objective3Completed: 0
-  button1task1: {fileID: 391013769}
-  button2task1: {fileID: 997124682}
-  button3task1: {fileID: 1944696386}
-  button4task1: {fileID: 722613080}
-  button5task1: {fileID: 1999228794}
---- !u!4 &957988630
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 957988628}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.15493783, y: 0.12720276, z: -9.919718}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &977835401
 GameObject:
   m_ObjectHideFlags: 0
@@ -5646,7 +5654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 606f848b0360ef645aa716c096226f0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sirurgiaMinigame: {fileID: 957988629}
+  sirurgiaMinigame: {fileID: 300970577}
   Task1: 0
   Task2: 0
   Task3: 0
@@ -6009,7 +6017,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 7.7142887, y: 27.714233}
+  m_AnchoredPosition: {x: 9.2, y: 6.6}
   m_SizeDelta: {x: 80, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1068230194
@@ -6063,6 +6071,37 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1070044901
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1070044902}
+  m_Layer: 0
+  m_Name: Animatio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1070044902
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070044901}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.4587176, y: -1.0121481, z: -9.903341}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1073161124
 GameObject:
   m_ObjectHideFlags: 0
@@ -6386,6 +6425,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1179805599}
   m_CullTransparentMesh: 1
+--- !u!1001 &1181749597
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1430543844679359299, guid: 0f569b8d663ed6f41ac25359ff6e5653, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.218
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430543844679359299, guid: 0f569b8d663ed6f41ac25359ff6e5653, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.099
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430543844679359299, guid: 0f569b8d663ed6f41ac25359ff6e5653, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430543844679359299, guid: 0f569b8d663ed6f41ac25359ff6e5653, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430543844679359299, guid: 0f569b8d663ed6f41ac25359ff6e5653, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430543844679359299, guid: 0f569b8d663ed6f41ac25359ff6e5653, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430543844679359299, guid: 0f569b8d663ed6f41ac25359ff6e5653, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430543844679359299, guid: 0f569b8d663ed6f41ac25359ff6e5653, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430543844679359299, guid: 0f569b8d663ed6f41ac25359ff6e5653, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430543844679359299, guid: 0f569b8d663ed6f41ac25359ff6e5653, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5207582362663381225, guid: 0f569b8d663ed6f41ac25359ff6e5653, type: 3}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5207582362663381225, guid: 0f569b8d663ed6f41ac25359ff6e5653, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831676600850605347, guid: 0f569b8d663ed6f41ac25359ff6e5653, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 30586929e4474234c94d14ff45a1ef1a, type: 2}
+    - target: {fileID: 6988966244146066453, guid: 0f569b8d663ed6f41ac25359ff6e5653, type: 3}
+      propertyPath: sceneViewId
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0f569b8d663ed6f41ac25359ff6e5653, type: 3}
 --- !u!1 &1184212767
 GameObject:
   m_ObjectHideFlags: 0
@@ -6437,7 +6545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 606f848b0360ef645aa716c096226f0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sirurgiaMinigame: {fileID: 957988629}
+  sirurgiaMinigame: {fileID: 0}
   Task1: 0
   Task2: 1
   Task3: 0
@@ -6968,6 +7076,7 @@ GameObject:
   - component: {fileID: 1275183328}
   - component: {fileID: 1275183327}
   - component: {fileID: 1275183326}
+  - component: {fileID: 1275183330}
   m_Layer: 0
   m_Name: PacienteComSirurgia
   m_TagString: Paciente
@@ -6994,7 +7103,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.65
+  m_Radius: 0.8
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1275183327
 MonoBehaviour:
@@ -7008,11 +7117,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6108198012810b2418b1f516861c99a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HassSirurgia: 1
+  HassSirurgia: 0
   SirurgiaCompleted: 0
   game: {fileID: 300970569}
   taskManager: {fileID: 300970576}
-  sirurgiaMiniGame: {fileID: 797564447}
+  sirurgiaMiniGameObj: {fileID: 797564447}
+  sirurgiaMiniGame: {fileID: 300970577}
   objectTag1: SiringaMao
   objectTag2: BisturiMao
   taskObject1Ui: {fileID: 218709111}
@@ -7092,6 +7202,27 @@ Transform:
   - {fileID: 183784972}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1275183330
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275183325}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4d76c24d52bbc7a4d9638127028e9376, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1275494348
 GameObject:
   m_ObjectHideFlags: 0
@@ -7143,7 +7274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 606f848b0360ef645aa716c096226f0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sirurgiaMinigame: {fileID: 957988629}
+  sirurgiaMinigame: {fileID: 0}
   Task1: 0
   Task2: 1
   Task3: 0
@@ -7484,7 +7615,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.04225266, y: 0.061031774}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -7495,7 +7626,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.9154947, y: 0.8779365}
   m_EdgeRadius: 0
 --- !u!1 &1303884048
 GameObject:
@@ -8266,7 +8397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 606f848b0360ef645aa716c096226f0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sirurgiaMinigame: {fileID: 957988629}
+  sirurgiaMinigame: {fileID: 0}
   Task1: 0
   Task2: 1
   Task3: 0
@@ -9077,7 +9208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 606f848b0360ef645aa716c096226f0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sirurgiaMinigame: {fileID: 957988629}
+  sirurgiaMinigame: {fileID: 0}
   Task1: 0
   Task2: 1
   Task3: 0
@@ -9508,7 +9639,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: -19.4}
+  m_AnchoredPosition: {x: -0.3, y: -0.7}
   m_SizeDelta: {x: 80, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1902974136
@@ -9682,7 +9813,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 606f848b0360ef645aa716c096226f0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sirurgiaMinigame: {fileID: 957988629}
+  sirurgiaMinigame: {fileID: 300970577}
   Task1: 0
   Task2: 0
   Task3: 0
@@ -9792,6 +9923,7 @@ GameObject:
   - component: {fileID: 1965479326}
   - component: {fileID: 1965479324}
   - component: {fileID: 1965479328}
+  - component: {fileID: 1965479329}
   m_Layer: 0
   m_Name: Paciente
   m_TagString: Paciente
@@ -9815,7 +9947,8 @@ MonoBehaviour:
   SirurgiaCompleted: 0
   game: {fileID: 300970569}
   taskManager: {fileID: 300970576}
-  sirurgiaMiniGame: {fileID: 0}
+  sirurgiaMiniGameObj: {fileID: 797564447}
+  sirurgiaMiniGame: {fileID: 300970577}
   objectTag1: SiringaMao
   objectTag2: RemedioMao
   taskObject1Ui: {fileID: 1057407711}
@@ -9914,8 +10047,29 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.65
+  m_Radius: 0.8
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &1965479329
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965479323}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4d76c24d52bbc7a4d9638127028e9376, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1968565745
 GameObject:
   m_ObjectHideFlags: 0
@@ -9967,7 +10121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 606f848b0360ef645aa716c096226f0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sirurgiaMinigame: {fileID: 957988629}
+  sirurgiaMinigame: {fileID: 0}
   Task1: 0
   Task2: 1
   Task3: 0
@@ -10192,7 +10346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 606f848b0360ef645aa716c096226f0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sirurgiaMinigame: {fileID: 957988629}
+  sirurgiaMinigame: {fileID: 300970577}
   Task1: 0
   Task2: 0
   Task3: 0
@@ -10620,7 +10774,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.043228775, y: 0.048632383}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -10631,7 +10785,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.91354245, y: 0.90273523}
   m_EdgeRadius: 0
 --- !u!212 &2117347034
 SpriteRenderer:
@@ -10878,9 +11032,17 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2453145573368928289, guid: 858035b6609aab241953cfccbf964b42, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3323246248386824137, guid: 858035b6609aab241953cfccbf964b42, type: 3}
       propertyPath: m_Name
       value: Paciente
+      objectReference: {fileID: 0}
+    - target: {fileID: 5621118950490970902, guid: 858035b6609aab241953cfccbf964b42, type: 3}
+      propertyPath: m_Radius
+      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10891,6 +11053,7 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 300970568}
   - {fileID: 530768307}
   - {fileID: 1224242393}
   - {fileID: 181938430}
@@ -10907,10 +11070,10 @@ SceneRoots:
   - {fileID: 390817377}
   - {fileID: 1597246288}
   - {fileID: 1932522667}
-  - {fileID: 300970568}
-  - {fileID: 957988630}
   - {fileID: 225169798}
   - {fileID: 908102721}
   - {fileID: 311554616}
   - {fileID: 541255910}
   - {fileID: 1056015060}
+  - {fileID: 1181749597}
+  - {fileID: 1070044902}

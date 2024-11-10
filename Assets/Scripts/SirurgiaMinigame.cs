@@ -68,7 +68,14 @@ public class SirurgiaMinigame : MonoBehaviour
         {
             stitchPoints2++;
             objective3Completed = true;
+            sirurgiaCompleted = true;
             objective.text = "cirurgia feita com sucesso";
+            Invoke("EndMiniGame", 1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            CloseMiniGame();
         }
     }
     private void Task2()
@@ -83,6 +90,21 @@ public class SirurgiaMinigame : MonoBehaviour
         objective3Started = true;
         objective2Started = false;
     }
+    private void EndMiniGame()
+    {
+        cutpoints1 = 0;
+        stitchPoints = 0;
+        stitchPoints2 = 0;
+        ReturnButtons();
+        sirurgiaMinigame.SetActive(false);
+        objective1Started = true;
+        objective2Started = false;
+        objective3Started = false;
+        objective1Completed = false;
+        objective2Completed = false;
+        objective3Completed = false;
+        objective.text = "clique nos quadrados brancos para cortar a pele";
+    }
     private void ReturnButtons()
     {
         button1task1.SetActive(true);
@@ -90,5 +112,9 @@ public class SirurgiaMinigame : MonoBehaviour
         button3task1.SetActive(true);
         button4task1.SetActive(true);
         button5task1.SetActive(true);
+    }
+    private void CloseMiniGame()
+    {
+        sirurgiaMinigame.SetActive(false);
     }
 }
