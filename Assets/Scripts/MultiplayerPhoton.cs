@@ -10,6 +10,12 @@ using UnityEngine.SceneManagement;
 
 public class MultiplayerPhoton : MonoBehaviourPunCallbacks
 {
+    public GameObject mainMenu;
+    public GameObject roomMenu;
+    public GameObject loadingPanel;
+
+    private bool onMainMenu = true;
+    private bool onLobby = false;
     private string roomName;
     private Room room;
     private GameObject player;
@@ -23,6 +29,10 @@ public class MultiplayerPhoton : MonoBehaviourPunCallbacks
 
     void Start()
     {
+        mainMenu.SetActive(true);
+        roomMenu.SetActive(false);
+        loadingPanel.SetActive(false);
+        roomNameTxt.text = "";
         userList.text = "";
         Debug.Log("[MultiplayerPhoton] Conectando no servidor...");
         //atualizar a versao  do photon para separar
@@ -59,6 +69,21 @@ public class MultiplayerPhoton : MonoBehaviourPunCallbacks
         PhotonNetwork.LeaveRoom();
     }
 
+    public void LobbyBTN()
+    {
+        onMainMenu = false;
+        if (onLobby)
+        {
+            mainMenu.SetActive(false);
+            roomMenu.SetActive(true);
+        }
+        else
+        {
+            loadingPanel.SetActive(true);
+        }
+        Debug.Log("botao lobby");
+    }
+
     // FUNCOES
 
     public void UpdateUserList()
@@ -87,6 +112,12 @@ public class MultiplayerPhoton : MonoBehaviourPunCallbacks
 
     public override void OnJoinedLobby()
     {
+        onLobby = true;
+        if (!onMainMenu)
+        {
+            roomMenu.SetActive(true);
+            mainMenu.SetActive(false);
+        }
         Debug.Log("[MultiplayerPhoton] Entrou no lobby!");
 
         //agora que estamos em um lobby
