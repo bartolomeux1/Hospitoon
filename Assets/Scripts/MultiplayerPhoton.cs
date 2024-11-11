@@ -27,6 +27,8 @@ public class MultiplayerPhoton : MonoBehaviourPunCallbacks
     [SerializeField]
     private TMP_InputField roomInput;
 
+    public TaskManager task;
+
     void Start()
     {
         mainMenu.SetActive(true);
@@ -67,6 +69,7 @@ public class MultiplayerPhoton : MonoBehaviourPunCallbacks
     public void LeaveRoomBTN()
     {
         PhotonNetwork.LeaveRoom();
+
     }
 
     public void LobbyBTN()
@@ -207,6 +210,7 @@ public class MultiplayerPhoton : MonoBehaviourPunCallbacks
     {
         // Carrega a cena atual para reiniciar o jogo
         PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().buildIndex);
+        task.pause = false;
     }
 
     public void MainMenu()

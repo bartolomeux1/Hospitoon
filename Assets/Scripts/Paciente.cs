@@ -27,6 +27,7 @@ public class Paciente : MonoBehaviour
     public GameObject nextPaciente;
     public bool proximoPaciente1 = false;
     public bool proximoPaciente2 = false;
+    public Animator animator;
 
     public int pacienteInt = 0;
     private void OnTriggerEnter(Collider collision)
@@ -134,33 +135,42 @@ public class Paciente : MonoBehaviour
     }
     private void Update()
     {
-        if (objective1Completed && objective2Completed)
+        if (taskManager.pause)
         {
-            taskCompleted = true;
-
+            animator.Play("pause");
+            return;
         }
-        if (sirurgiaMiniGame.sirurgiaCompleted)
+        else
         {
-            SirurgiaCompleted = true;
-        }
-        if (taskCompleted) //usar os dois itens...
-        {
-            Debug.Log("TaskConcluida");
-
-            if (HassSirurgia == false)
+            if (objective1Completed && objective2Completed)
             {
-                EndTask();
+                taskCompleted = true;
 
             }
-            if (HassSirurgia)
+            if (sirurgiaMiniGame.sirurgiaCompleted)
             {
-                if (SirurgiaCompleted)
+                SirurgiaCompleted = true;
+            }
+            if (taskCompleted) //usar os dois itens...
+            {
+                Debug.Log("TaskConcluida");
+
+                if (HassSirurgia == false)
                 {
                     EndTask();
-                }
 
+                }
+                if (HassSirurgia)
+                {
+                    if (SirurgiaCompleted)
+                    {
+                        EndTask();
+                    }
+
+                }
             }
         }
+
 
     }
 
@@ -199,6 +209,6 @@ public class Paciente : MonoBehaviour
             //Destroy(gameObject);
             return;
         }
-        Destroy(gameObject);
+        
     }
 }

@@ -86,6 +86,8 @@ public class Game : MonoBehaviour
                 feedbackStatus = false;
                 feedback.SetActive(true);
                 pontuacaoGrande.SetActive(true);
+
+                taskManager.pause = true;
             }
         }
 
@@ -96,9 +98,11 @@ public class Game : MonoBehaviour
     }
     public void FeedBackStatus()
     {
-        if (feedbackStatus)
-            txtFeedback.text = "Você ganhou";
-        else txtFeedback.text = "Você perdeu";
+        //if (feedbackStatus)
+        //    txtFeedback.text = "Você ganhou";
+        //else txtFeedback.text = "Você perdeu";
+
+        //sistema de feedback pra dizer se venceu ou perde, caso haja fases.
     }
 
 

@@ -1489,7 +1489,7 @@ Transform:
   m_GameObject: {fileID: 225169795}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.113954544, y: 0.07738817, z: -10}
+  m_LocalPosition: {x: -0.218, y: -1.099, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1878,6 +1878,7 @@ MonoBehaviour:
   userList: {fileID: 0}
   roomNameTxt: {fileID: 0}
   roomInput: {fileID: 0}
+  task: {fileID: 300970576}
 --- !u!114 &300970573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1956,6 +1957,7 @@ MonoBehaviour:
   emojisImage2: {fileID: 418788504}
   timerSlider: {fileID: 1902974136}
   timerSlider2: {fileID: 1068230194}
+  pause: 0
   photonView: {fileID: 300970573}
 --- !u!114 &300970577
 MonoBehaviour:
@@ -2720,6 +2722,7 @@ MonoBehaviour:
   nextPaciente: {fileID: 1224242390}
   proximoPaciente1: 0
   proximoPaciente2: 0
+  animator: {fileID: 390817378}
   pacienteInt: 2
 --- !u!212 &390817376
 SpriteRenderer:
@@ -2993,7 +2996,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: -0.000030517578}
+  m_AnchoredPosition: {x: -0, y: -23.2}
   m_SizeDelta: {x: 40, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &418788504
@@ -3103,6 +3106,7 @@ MonoBehaviour:
   nextPaciente: {fileID: 1224242390}
   proximoPaciente1: 0
   proximoPaciente2: 0
+  animator: {fileID: 0}
   pacienteInt: 0
 --- !u!212 &426644090
 SpriteRenderer:
@@ -3561,6 +3565,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1920780046}
+  - {fileID: 1073161125}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -5133,7 +5138,7 @@ GameObject:
   - component: {fileID: 898520004}
   - component: {fileID: 898520003}
   m_Layer: 5
-  m_Name: backgroundFeedback
+  m_Name: //usardps//backgroundFeedback
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5370,7 +5375,7 @@ Transform:
   m_GameObject: {fileID: 908102718}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.113954544, y: 0.07738817, z: -10}
+  m_LocalPosition: {x: -0.218, y: -1.099, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6020,7 +6025,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9.2, y: 6.6}
+  m_AnchoredPosition: {x: 9.2, y: 25}
   m_SizeDelta: {x: 80, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1068230194
@@ -6128,18 +6133,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1073161124}
-  m_LocalRotation: {x: -0, y: -0, z: -1, w: 0}
+  m_LocalRotation: {x: 0, y: -0, z: -1, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1068230193}
   - {fileID: 418788503}
-  m_Father: {fileID: 1920780046}
+  m_Father: {fileID: 541255910}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5.400002, y: 182.2}
+  m_AnchoredPosition: {x: -13.699997, y: 21.200012}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1152635811
@@ -6387,7 +6392,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5.3999987, y: 0}
+  m_AnchoredPosition: {x: 5.3999987, y: 23.2}
   m_SizeDelta: {x: 40, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1179805601
@@ -6428,75 +6433,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1179805599}
   m_CullTransparentMesh: 1
---- !u!1001 &1181749597
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1430543844679359299, guid: 0f569b8d663ed6f41ac25359ff6e5653, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.218
-      objectReference: {fileID: 0}
-    - target: {fileID: 1430543844679359299, guid: 0f569b8d663ed6f41ac25359ff6e5653, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.099
-      objectReference: {fileID: 0}
-    - target: {fileID: 1430543844679359299, guid: 0f569b8d663ed6f41ac25359ff6e5653, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1430543844679359299, guid: 0f569b8d663ed6f41ac25359ff6e5653, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1430543844679359299, guid: 0f569b8d663ed6f41ac25359ff6e5653, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1430543844679359299, guid: 0f569b8d663ed6f41ac25359ff6e5653, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1430543844679359299, guid: 0f569b8d663ed6f41ac25359ff6e5653, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1430543844679359299, guid: 0f569b8d663ed6f41ac25359ff6e5653, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1430543844679359299, guid: 0f569b8d663ed6f41ac25359ff6e5653, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1430543844679359299, guid: 0f569b8d663ed6f41ac25359ff6e5653, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5207582362663381225, guid: 0f569b8d663ed6f41ac25359ff6e5653, type: 3}
-      propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 5207582362663381225, guid: 0f569b8d663ed6f41ac25359ff6e5653, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6831676600850605347, guid: 0f569b8d663ed6f41ac25359ff6e5653, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 30586929e4474234c94d14ff45a1ef1a, type: 2}
-    - target: {fileID: 6988966244146066453, guid: 0f569b8d663ed6f41ac25359ff6e5653, type: 3}
-      propertyPath: sceneViewId
-      value: 2
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 0f569b8d663ed6f41ac25359ff6e5653, type: 3}
 --- !u!1 &1184212767
 GameObject:
   m_ObjectHideFlags: 0
@@ -7042,7 +6978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.64705884, g: 0.8670355, b: 0.9254902, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7136,6 +7072,7 @@ MonoBehaviour:
   nextPaciente: {fileID: 1224242390}
   proximoPaciente1: 0
   proximoPaciente2: 0
+  animator: {fileID: 0}
   pacienteInt: 0
 --- !u!212 &1275183328
 SpriteRenderer:
@@ -8694,12 +8631,12 @@ GameObject:
   - component: {fileID: 1595833191}
   - component: {fileID: 1595833190}
   m_Layer: 5
-  m_Name: txtFeedback
+  m_Name: //usardps//txtFeedback
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1595833189
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9642,7 +9579,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.3, y: -0.7}
+  m_AnchoredPosition: {x: -0.3, y: -16.7}
   m_SizeDelta: {x: 80, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1902974136
@@ -9726,7 +9663,6 @@ RectTransform:
   m_Children:
   - {fileID: 1902974135}
   - {fileID: 1179805600}
-  - {fileID: 1073161125}
   m_Father: {fileID: 541255910}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -9962,6 +9898,7 @@ MonoBehaviour:
   nextPaciente: {fileID: 1224242390}
   proximoPaciente1: 0
   proximoPaciente2: 0
+  animator: {fileID: 1965479329}
   pacienteInt: 1
 --- !u!212 &1965479326
 SpriteRenderer:
@@ -11078,5 +11015,4 @@ SceneRoots:
   - {fileID: 311554616}
   - {fileID: 541255910}
   - {fileID: 1056015060}
-  - {fileID: 1181749597}
   - {fileID: 1070044902}

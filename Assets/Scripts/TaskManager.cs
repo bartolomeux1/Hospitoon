@@ -72,6 +72,7 @@ public class TaskManager : MonoBehaviour
     public Slider timerSlider;
     public Slider timerSlider2;
 
+   public bool pause = false;
    public PhotonView photonView;
     // Start is called before the first frame update
     void Start()
@@ -87,25 +88,31 @@ public class TaskManager : MonoBehaviour
 
     public void Update()
     {
-        if (!task1Completed)
-            TimerMaca1();
-        if ( !task2Completed)
-            TimerMaca2();
-
-        if (paciente.proximoPaciente1 && PhotonNetwork.IsMasterClient)
+        if (pause)
+            return;
+        else
         {
-            photonView.RPC("StartMaca1Task", RpcTarget.All);
-            task1Completed = false;
-            paciente.proximoPaciente1 = false;
-            
+            if (!task1Completed)
+                TimerMaca1();
+            if (!task2Completed)
+                TimerMaca2();
 
-        }
+            if (paciente.proximoPaciente1 && PhotonNetwork.IsMasterClient)
+            {
+                photonView.RPC("StartMaca1Task", RpcTarget.All);
+                task1Completed = false;
+                paciente.proximoPaciente1 = false;
 
-        if (paciente.proximoPaciente2 && PhotonNetwork.IsMasterClient)
-        {
-            photonView.RPC("StartMaca2Task", RpcTarget.All);
-            task2Completed = false;
-            paciente.proximoPaciente2 = false;
+
+            }
+
+            if (paciente.proximoPaciente2 && PhotonNetwork.IsMasterClient)
+            {
+                photonView.RPC("StartMaca2Task", RpcTarget.All);
+                task2Completed = false;
+                paciente.proximoPaciente2 = false;
+
+            }
 
         }
     }
@@ -147,24 +154,56 @@ public class TaskManager : MonoBehaviour
     }
     private void TimerMaca1()
     {
-        if (!pauseTimer1)
+        if(pause)
+            return;
+        else
         {
-            if (timerAtual1 > 0)
+            if (!pauseTimer1)
             {
-                timerAtual1 -= Time.deltaTime;
-                timerSlider.value = (float)timerAtual1;
-
-                UpdateEmoji1();
-
-                // Quando o timer chega a 0, destrói o objeto em ambos os clientes
-                if (timerAtual1 <= 0)
+                if (timerAtual1 > 0)
                 {
-                    photonView.RPC("DestroyPaciente1", RpcTarget.AllBuffered);
+                    timerAtual1 -= Time.deltaTime;
+                    timerSlider.value = (float)timerAtual1;
+
+                    UpdateEmoji1();
+
+                    // Quando o timer chega a 0, destrói o objeto em ambos os clientes
+                    if (timerAtual1 <= 0)
+                    {
+                        photonView.RPC("DestroyPaciente1", RpcTarget.AllBuffered);
+                    }
                 }
             }
+            if (pauseTimer1)
+                timerAtual1 = timerAtual1;
         }
-        if (pauseTimer1)
-            timerAtual1 = timerAtual1;
+    }
+    private void TimerMaca2()
+    {
+        if(pause)
+            return;
+        else
+        {
+            if (!pauseTimer2)
+            {
+                if (timerAtual2 > 0)
+                {
+                    timerAtual2 -= 1 * Time.deltaTime;
+                    timerSlider2.value = (float)timerAtual2;
+
+                    UpdateEmoji2();
+
+
+                    // Quando o timer chega a 0, destrói o objeto
+                    if (timerAtual2 <= 0)
+                    {
+                        photonView.RPC("DestroyPaciente2", RpcTarget.AllBuffered);
+                    }
+                }
+                if (pauseTimer2)
+                    timerAtual2 = timerAtual2;
+            }
+        }
     }
     [PunRPC]
     void DestroyPaciente1()
@@ -186,58 +225,45 @@ public class TaskManager : MonoBehaviour
             paciente.proximoPaciente2 = true;
         }
     }
-    private void TimerMaca2()
-    {
-        if (!pauseTimer2)
-        {
-            if (timerAtual2 > 0)
-            {
-                timerAtual2 -= 1 * Time.deltaTime;
-                timerSlider2.value = timerAtual2;
-
-                UpdateEmoji2();
-
-
-                // Quando o timer chega a 0, destrói o objeto
-                if (timerAtual2 <= 0)
-                {
-                    photonView.RPC("DestroyPaciente2", RpcTarget.AllBuffered);
-                }
-            }
-            if (pauseTimer2)
-                timerAtual2 = timerAtual2;
-        }
-
-    }
     private void UpdateEmoji1()
     {
-        // Atualiza o emoji baseado no tempo atual
-        if (timerAtual1 <= 9 && timerAtual1 > 6)
-            emojisImage.sprite = emojis[1];
-        
-        else if (timerAtual1 <= 6 && timerAtual1 > 3)
-            emojisImage.sprite = emojis[2];
-       
-        else if (timerAtual1 <= 3 && timerAtual1 > 0)
-            emojisImage.sprite = emojis[3];
-        
-        else if (timerAtual1 <=0)
-            emojisImage.sprite = emojis[4];
+        if (pause)
+            return;
+        else
+        {
+            // Atualiza o emoji baseado no tempo atual
+            if (timerAtual1 <= 9 && timerAtual1 > 6)
+                emojisImage.sprite = emojis[1];
+
+            else if (timerAtual1 <= 6 && timerAtual1 > 3)
+                emojisImage.sprite = emojis[2];
+
+            else if (timerAtual1 <= 3 && timerAtual1 > 0)
+                emojisImage.sprite = emojis[3];
+
+            else if (timerAtual1 <= 0)
+                emojisImage.sprite = emojis[4];
+        }
     }
     private void UpdateEmoji2()
     {
-        // Atualiza o emoji baseado no tempo atual
-        if (timerAtual2 <= 9 && timerAtual2 > 6)
-            emojisImage2.sprite = emojis[1];
+        if (pause)
+            return;
+        else
+        {
+            // Atualiza o emoji baseado no tempo atual
+            if (timerAtual2 <= 9 && timerAtual2 > 6)
+                emojisImage2.sprite = emojis[1];
 
-        else if (timerAtual2 <= 6 && timerAtual2 > 3)
-            emojisImage2.sprite = emojis[2];
+            else if (timerAtual2 <= 6 && timerAtual2 > 3)
+                emojisImage2.sprite = emojis[2];
 
-        else if (timerAtual2 <= 3 && timerAtual2 > 0)
-            emojisImage2.sprite = emojis[3];
+            else if (timerAtual2 <= 3 && timerAtual2 > 0)
+                emojisImage2.sprite = emojis[3];
 
-        else if (timerAtual2 <= 0)
-            emojisImage2.sprite = emojis[4];
+            else if (timerAtual2 <= 0)
+                emojisImage2.sprite = emojis[4];
+        }
     }
     public void Tasks() //game usa pra rodar tasks.
     {
@@ -303,8 +329,9 @@ public class TaskManager : MonoBehaviour
 
         paciente2Clone = Instantiate(paciente2, paciente2Spawn.transform.position, paciente2Spawn.transform.rotation);
 
-        Instantiate(paciente2, paciente2Spawn.transform.position, paciente2Spawn.transform.rotation);
+        //Instantiate(paciente2, paciente2Spawn.transform.position, paciente2Spawn.transform.rotation);
 
+        game.isTimerRunning = true;
         pauseTimer2 = false;
 
         timerAtual2 = timerMaca2;
