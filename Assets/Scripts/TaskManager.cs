@@ -307,18 +307,18 @@ public class TaskManager : MonoBehaviour
             task2Completed = false;
             task2CompletedCouter++;
         }
-        if (task1CompletedCouter > 3)
-        {
-            NewPaciente1();
-            task1CanceledCouter++;
-            timerMaca1 = +20;
-        }
-        if(task2CompletedCouter > 3) 
-        { 
-            NewPaciente2(); 
-            task2CanceledCouter++;
-            timerMaca2 = + 20;
-        }
+        //if (task1CompletedCouter > 3)
+        //{
+        //    NewPaciente1();
+        //    task1CanceledCouter++;
+        //    timerMaca1 = +20;
+        //}
+        //if(task2CompletedCouter > 3) 
+        //{ 
+        //    NewPaciente2(); 
+        //    task2CanceledCouter++;
+        //    timerMaca2 = + 20;
+        //}
         if((task1CompletedCouter > 1)) { BackuPaciente1(); }
         if((task2CompletedCouter > 1)) { BackuPaciente2(); }
     }
