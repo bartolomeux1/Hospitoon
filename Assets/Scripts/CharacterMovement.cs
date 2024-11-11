@@ -5,6 +5,7 @@ public class CharacterMovement : MonoBehaviourPunCallbacks
 {
     private CharacterController character;
     private Vector3 inputX;
+    private Vector3 buffer = Vector3.zero;
 
     public GameObject bisturi;
     public GameObject siringa;
@@ -30,12 +31,8 @@ public class CharacterMovement : MonoBehaviourPunCallbacks
     {
         character = GetComponent<CharacterController>();
         // find the animator component in graphicPlayer
-        animController = GameObject.Find("GraphicPlayer").GetComponent<Animator>();
-        graphicPlayer = GameObject.Find("GraphicPlayer");
-        animController.SetBool("Idle", true);
-        animController.SetBool("WalkUp", false);
-        animController.SetBool("WalkDown", false);
-        animController.SetBool("WalkSide", false);
+        graphicPlayer = transform.GetChild(3).gameObject;
+        animController = graphicPlayer.GetComponent<Animator>();
         spriteRenderer = graphicPlayer.GetComponent<SpriteRenderer>();
 
         // Localiza o script 'Game' na 'mainCamera'
@@ -56,6 +53,38 @@ public class CharacterMovement : MonoBehaviourPunCallbacks
 
     void FixedUpdate()
     {
+        //magnitude, normalized
+
+        if ((transform.position - buffer).magnitude > 0.01f)
+        {
+            animController.SetBool("isWalking", true);
+
+            if ((transform.position - buffer).normalized == Vector3.up)
+            {
+                animController.Play("WalkUp");
+            }
+            else if ((transform.position - buffer).normalized == Vector3.down)
+            {
+                animController.Play("WalkDown");
+            }
+            if ((transform.position - buffer).normalized == Vector3.right)
+            {
+                spriteRenderer.flipX = false;
+                animController.Play("WalkSide");
+            }
+            else if ((transform.position - buffer).normalized == Vector3.left)
+            {
+                spriteRenderer.flipX = true;
+                animController.Play("WalkSide");
+            }
+        }
+        else
+        {
+            animController.SetBool("isWalking", false);
+        }
+
+
+        buffer = transform.position;
         if (!photonView.IsMine) return;
 
         if (game.feedbackStatus == false)
@@ -68,39 +97,38 @@ public class CharacterMovement : MonoBehaviourPunCallbacks
             inputX = Vector3.ClampMagnitude(inputX, 1);
             character.Move(inputX * velocity * Time.deltaTime);
 
-            if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+            /*if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow))
             {
-                animController.SetBool("Idle", false);
-                animController.SetBool("WalkUp", false);
-                animController.SetBool("WalkDown", false);
-                animController.SetBool("WalkSide", false);
-                if (Input.GetKey(KeyCode.W))
+                animController.SetBool("isWalking", true);
+                if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)))
                 {
-                    animController.SetBool("WalkUp", true);
+                    animController.Play("WalkDown");
                 }
-                if (Input.GetKey(KeyCode.S))
+                else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
                 {
-                    animController.SetBool("WalkDown", true);
+                    animController.Play("WalkUp");
                 }
-                if (Input.GetKey(KeyCode.A))
+                else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
                 {
-                    animController.SetBool("WalkSide", true);
+                    animController.Play("WalkDown");
+                }
+                if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)))
+                {
+                    animController.Play("WalkSide");
+                }
+                else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+                {
+                    animController.Play("WalkSide");
                     spriteRenderer.flipX = true;
                 }
-                if (Input.GetKey(KeyCode.D))
+                else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
                 {
-                    animController.SetBool("WalkSide", true);
+                    animController.Play("WalkSide");
                     spriteRenderer.flipX = false;
                 }
             }
             else
-            {
-                animController.SetBool("Idle", true);
-                animController.SetBool("WalkUp", false);
-                animController.SetBool("WalkDown", false);
-                animController.SetBool("WalkSide", false);
-                spriteRenderer.flipX = false;
-            }
+                animController.SetBool("isWalking", false);*/
         }
     }
 

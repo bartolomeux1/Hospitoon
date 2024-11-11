@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class LobbyManager : MonoBehaviourPunCallbacks
 {
     public Button startButton; // Botão que será usado para iniciar o jogo
+    public GameObject charSelectPanel;
+
+    [SerializeField] private Sprite[] characters;
 
     void Start()
     {
@@ -18,20 +21,26 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         // Verifica se o jogador está em uma sala
         if (PhotonNetwork.InRoom)
         {
+            charSelectPanel.SetActive(true);
             // Verifica se é o fodão (dono da sala)
             if (PhotonNetwork.IsMasterClient)
             {
                 startButton.gameObject.SetActive(true); // Ativa o botão de Start se for o criador da sala
+                charSelectPanel.transform.GetChild(0).GetComponent<Image>().sprite = characters[0];
+                charSelectPanel.transform.GetChild(1).GetComponent<Image>().sprite = characters[1];
             }
             else
             {
                 startButton.gameObject.SetActive(false); // Esconde o botão para outros jogadores
+                charSelectPanel.transform.GetChild(0).GetComponent<Image>().sprite = characters[2];
+                charSelectPanel.transform.GetChild(1).GetComponent<Image>().sprite = characters[3];
             }
         }
         else
         {
             // Se não estiver em nenhuma sala, desativa o botão Start
             startButton.gameObject.SetActive(false);
+            charSelectPanel.SetActive(false);
         }
     }
 
@@ -74,10 +83,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         if (PhotonNetwork.CurrentRoom.PlayerCount == 2)
         {
             // Apenas o jogador MasterClient chama o RPC para iniciar o jogo
-            if (PhotonNetwork.IsMasterClient)
-            {
-                photonView.RPC("StartGame", RpcTarget.All);
-            }
+            //if (PhotonNetwork.IsMasterClient)
+            //{
+            //    photonView.RPC("StartGame", RpcTarget.All);
+            //}
         }
         Debug.Log("[LobbyManager] Jogador entrou na sala: " + newPlayer.NickName);
         UpdateStartButtonState();

@@ -1872,6 +1872,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6b8d922e72129e4d8a44efb6d0a7374, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMenu: {fileID: 0}
+  roomMenu: {fileID: 0}
+  loadingPanel: {fileID: 0}
   userList: {fileID: 0}
   roomNameTxt: {fileID: 0}
   roomInput: {fileID: 0}

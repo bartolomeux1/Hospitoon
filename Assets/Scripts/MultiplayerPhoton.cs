@@ -84,6 +84,15 @@ public class MultiplayerPhoton : MonoBehaviourPunCallbacks
         Debug.Log("botao lobby");
     }
 
+    public void CharSelectBTN(int value)
+    {
+        int index = value;
+        if (!PhotonNetwork.IsMasterClient)
+            index += 2;
+
+        GameObject.Find("PersistentInfo").GetComponent<PersistentInfo>().SetIndex(index);
+    }
+
     // FUNCOES
 
     public void UpdateUserList()

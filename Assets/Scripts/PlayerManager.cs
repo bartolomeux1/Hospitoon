@@ -19,6 +19,9 @@ public class PlayerManager : MonoBehaviour
             {
                 virtualCamera.Follow = playerInstance.transform;
             }
+
+            int index = GameObject.Find("PersistentInfo").GetComponent<PersistentInfo>().GetIndex();
+            playerInstance.GetComponent<SkinController>().CallChangeSkin(index);
         }
     }
 }
