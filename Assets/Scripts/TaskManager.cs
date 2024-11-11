@@ -70,9 +70,11 @@ public class TaskManager : MonoBehaviour
     public Image emojisImage;
     public Image emojisImage2;
     public Slider timerSlider;
+    public Image fillImage;
     public Slider timerSlider2;
+    public Image fillImage2;
 
-   public bool pause = false;
+    public bool pause = false;
    public PhotonView photonView;
     // Start is called before the first frame update
     void Start()
@@ -82,6 +84,12 @@ public class TaskManager : MonoBehaviour
             photonView.RPC("StartMaca2Task", RpcTarget.AllBuffered);
             photonView.RPC("StartMaca1Task", RpcTarget.AllBuffered);
         }
+
+
+       fillImage = timerSlider.fillRect.GetComponent<Image>();
+       fillImage2 = timerSlider2.fillRect.GetComponent<Image>();
+
+    
         paciente1Backup = paciente1;
         Paciente2Backup = paciente2;
     }
@@ -97,6 +105,14 @@ public class TaskManager : MonoBehaviour
             if (!task2Completed)
                 TimerMaca2();
 
+            if(timerAtual1 <=0)
+                InviFill();
+            if(timerAtual2 <=0)
+                InviFill2();
+            if(timerAtual1 >=0)
+                ShowFill();
+            if(timerAtual2 >=0)
+                ShowFill2();
             if (paciente.proximoPaciente1 && PhotonNetwork.IsMasterClient)
             {
                 photonView.RPC("StartMaca1Task", RpcTarget.All);
@@ -120,7 +136,7 @@ public class TaskManager : MonoBehaviour
     void StartMaca1Task()
     {
         double currentTime = PhotonNetwork.Time;
-        double taskStartTime = currentTime + 2.0; // espera de 2 segundos
+        double taskStartTime = currentTime + Random.Range(1,3); // espera de 1/3 segundos
 
         StartCoroutine(WaitAndExecuteTask(taskStartTime));
     }
@@ -129,7 +145,7 @@ public class TaskManager : MonoBehaviour
     {
         Debug.Log("Chamando StartMaca2Task");
         double currentTime = PhotonNetwork.Time;
-        double taskStartTime = currentTime + 3.0; // espera de 3 segundos
+        double taskStartTime = currentTime + Random.Range(3, 7); ; // espera de 3/7 segundos
 
         StartCoroutine(WaitAndExecuteTask2(taskStartTime));
     }
@@ -162,6 +178,7 @@ public class TaskManager : MonoBehaviour
             {
                 if (timerAtual1 > 0)
                 {
+                    
                     timerAtual1 -= Time.deltaTime;
                     timerSlider.value = (float)timerAtual1;
 
@@ -170,6 +187,7 @@ public class TaskManager : MonoBehaviour
                     // Quando o timer chega a 0, destrói o objeto em ambos os clientes
                     if (timerAtual1 <= 0)
                     {
+                        
                         photonView.RPC("DestroyPaciente1", RpcTarget.AllBuffered);
                     }
                 }
@@ -188,6 +206,8 @@ public class TaskManager : MonoBehaviour
             {
                 if (timerAtual2 > 0)
                 {
+                    ShowFill();
+                   
                     timerAtual2 -= 1 * Time.deltaTime;
                     timerSlider2.value = (float)timerAtual2;
 
@@ -197,6 +217,7 @@ public class TaskManager : MonoBehaviour
                     // Quando o timer chega a 0, destrói o objeto
                     if (timerAtual2 <= 0)
                     {
+                        InviFill();
                         photonView.RPC("DestroyPaciente2", RpcTarget.AllBuffered);
                     }
                 }
@@ -339,7 +360,27 @@ public class TaskManager : MonoBehaviour
         timerSlider2.value = timerAtual2;
         emojisImage2.sprite = emojis[0];
 
-        
+
+    }
+    public void InviFill()
+    {
+        if (paciente1)
+            fillImage.color = new Color(fillImage.color.r, fillImage.color.g, fillImage.color.b, 0f);
+    }
+    public void InviFill2()
+    {
+        if (paciente2)
+            fillImage2.color = new Color(fillImage2.color.r, fillImage2.color.g, fillImage2.color.b, 0f);
+    }
+    public void ShowFill()
+    {
+        if (paciente1)
+            fillImage.color = new Color(fillImage.color.r, fillImage.color.g, fillImage.color.b, 255f);
+    }
+    public void ShowFill2()
+    {
+        if (paciente2)
+            fillImage2.color = new Color(fillImage2.color.r, fillImage2.color.g, fillImage2.color.b, 255f);
     }
 
     public void NewPaciente1()
