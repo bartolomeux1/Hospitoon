@@ -4465,7 +4465,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &797564448
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4484,10 +4484,10 @@ RectTransform:
   - {fileID: 62720247}
   m_Father: {fileID: 1656202309}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -4.00235}
-  m_SizeDelta: {x: -391.62, y: -208.1207}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -18.082092, y: 8.277588}
+  m_SizeDelta: {x: 1169.8358, y: 472.4393}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &797564449
 MonoBehaviour:
@@ -6654,7 +6654,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!135 &1224242391
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -7058,7 +7058,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6108198012810b2418b1f516861c99a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HassSirurgia: 0
+  HassSirurgia: 1
   SirurgiaCompleted: 0
   game: {fileID: 300970569}
   taskManager: {fileID: 300970576}

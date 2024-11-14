@@ -209,6 +209,6 @@ public class Paciente : MonoBehaviour
             //Destroy(gameObject);
             return;
         }
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 }

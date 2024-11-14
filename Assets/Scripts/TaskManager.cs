@@ -311,16 +311,16 @@ public class TaskManager : MonoBehaviour
         {
             NewPaciente1();
             task1CanceledCouter++;
-            timerMaca1 = +20;
+            timerMaca1 = +18;
         }
         if(task2CompletedCouter > 3) 
         { 
             NewPaciente2(); 
             task2CanceledCouter++;
-            timerMaca2 = + 20;
+            timerMaca2 = + 18;
         }
-        if((task1CompletedCouter > 1)) { BackuPaciente1(); }
-        if((task2CompletedCouter > 1)) { BackuPaciente2(); }
+        if((task1CompletedCouter > 0)) { BackuPaciente1(); }
+        if((task2CompletedCouter > 0)) { BackuPaciente2(); }
     }
     public void Maca1Task1()
     {
