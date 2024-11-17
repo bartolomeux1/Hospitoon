@@ -319,8 +319,16 @@ public class TaskManager : MonoBehaviour
             task2CanceledCouter++;
             timerMaca2 = + 18;
         }
-        if((task1CompletedCouter > 0)) { BackuPaciente1(); }
-        if((task2CompletedCouter > 0)) { BackuPaciente2(); }
+        if((task1CompletedCouter > 0)) 
+        { 
+            BackuPaciente1();
+            timerMaca1 = 12;
+        }
+        if((task2CompletedCouter > 0)) 
+        { 
+            BackuPaciente2();
+            timerMaca2 = 12;
+        }
     }
     public void Maca1Task1()
     {

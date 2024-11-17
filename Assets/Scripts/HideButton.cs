@@ -12,11 +12,19 @@ public class HideButton : MonoBehaviour
     private void Update()
     {
         if (sirurgiaMinigame.objective1Started)
-            Task1 = true; //Task2 = false; Task3 = false;
+            Task1 = true; //Task2 = false;
+            Task3 = false;
         if (sirurgiaMinigame.objective2Started)
             Task2 = true;
         if (sirurgiaMinigame.objective3Started)
              Task3 = true; 
+
+        if (sirurgiaMinigame.objective1Completed)
+            Task1 = false;
+        if (sirurgiaMinigame.objective2Completed)
+            Task2 = false;
+        if (sirurgiaMinigame.objective3Completed)
+            Task3 = false;
     }
     public void Hide()
     {

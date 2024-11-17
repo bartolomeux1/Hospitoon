@@ -2373,6 +2373,8 @@ MonoBehaviour:
   task2: {fileID: 1355705279}
   task3: {fileID: 814914869}
   sirurgiaMinigame: {fileID: 797564447}
+  paciente1: {fileID: 1275183327}
+  paciente2: {fileID: 426644089}
   objective: {fileID: 62720245}
   sirurgiaCompleted: 0
   sirurgiaFailed: 0
@@ -3381,7 +3383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HassSirurgia: 0
-  SirurgiaCompleted: 0
+  cirurgiaCompleted: 0
   game: {fileID: 300970569}
   taskManager: {fileID: 300970576}
   sirurgiaMiniGameObj: {fileID: 797564447}
@@ -3764,8 +3766,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6108198012810b2418b1f516861c99a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HassSirurgia: 0
-  SirurgiaCompleted: 0
+  HassSirurgia: 1
+  cirurgiaCompleted: 0
   game: {fileID: 300970569}
   taskManager: {fileID: 300970576}
   sirurgiaMiniGameObj: {fileID: 797564447}
@@ -3781,7 +3783,7 @@ MonoBehaviour:
   proximoPaciente1: 0
   proximoPaciente2: 0
   animator: {fileID: 0}
-  pacienteInt: 0
+  pacienteInt: 2
 --- !u!212 &426644090
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8774,7 +8776,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HassSirurgia: 1
-  SirurgiaCompleted: 0
+  cirurgiaCompleted: 0
   game: {fileID: 300970569}
   taskManager: {fileID: 300970576}
   sirurgiaMiniGameObj: {fileID: 797564447}
@@ -8790,7 +8792,7 @@ MonoBehaviour:
   proximoPaciente1: 0
   proximoPaciente2: 0
   animator: {fileID: 0}
-  pacienteInt: 0
+  pacienteInt: 1
 --- !u!212 &1275183328
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8852,7 +8854,7 @@ Transform:
   m_GameObject: {fileID: 1275183325}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.11, y: -5.65, z: 0}
+  m_LocalPosition: {x: -2.078, y: -5.634, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -13312,7 +13314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HassSirurgia: 0
-  SirurgiaCompleted: 0
+  cirurgiaCompleted: 0
   game: {fileID: 300970569}
   taskManager: {fileID: 300970576}
   sirurgiaMiniGameObj: {fileID: 797564447}
@@ -14775,6 +14777,18 @@ PrefabInstance:
     - target: {fileID: 321678044775760319, guid: 858035b6609aab241953cfccbf964b42, type: 3}
       propertyPath: pacienteInt
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 321678044775760319, guid: 858035b6609aab241953cfccbf964b42, type: 3}
+      propertyPath: taskCompleted
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 321678044775760319, guid: 858035b6609aab241953cfccbf964b42, type: 3}
+      propertyPath: objective1Completed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 321678044775760319, guid: 858035b6609aab241953cfccbf964b42, type: 3}
+      propertyPath: objective2Completed
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 340668321078265708, guid: 858035b6609aab241953cfccbf964b42, type: 3}
       propertyPath: m_LocalScale.x

@@ -14,6 +14,8 @@ public class SirurgiaMinigame : MonoBehaviour
     public GameObject task3;
 
     public GameObject sirurgiaMinigame;
+    public Paciente paciente1;
+    public Paciente paciente2;
 
     public Text objective;
 
@@ -32,7 +34,7 @@ public class SirurgiaMinigame : MonoBehaviour
     public bool objective2Completed = false;
     public bool objective3Completed = false;
 
-    [Header("Objective1")]
+    [Header("Buttons")]
     public GameObject button1task1;
     public GameObject button2task1;
     public GameObject button3task1;
@@ -92,6 +94,9 @@ public class SirurgiaMinigame : MonoBehaviour
     }
     private void EndMiniGame()
     {
+        //paciente1.SirurgiaCompleted = false;
+        //paciente2.SirurgiaCompleted = false;
+        sirurgiaCompleted = false;
         cutpoints1 = 0;
         stitchPoints = 0;
         stitchPoints2 = 0;
