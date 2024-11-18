@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class Paciente : MonoBehaviour
 {
-    public bool HassSirurgia;
+    public bool HassCirurgia;
+    public bool cirugiaStarted;
+    public bool cirurgiaFailed;
     public bool cirurgiaCompleted;
 
     public Game game;
@@ -83,7 +85,7 @@ public class Paciente : MonoBehaviour
                     taskManager.timerAtual1 = 12;
                 else
                     taskManager.timerAtual1 += 2;
-                if (HassSirurgia)
+                if (HassCirurgia)
                 {
                     if (cirurgiaCompleted)
                     {
@@ -98,7 +100,7 @@ public class Paciente : MonoBehaviour
                 else
                     taskManager.timerAtual2 += 2;
 
-                if (HassSirurgia)
+                if (HassCirurgia)
                 {
                     if (cirurgiaCompleted)
                     {
@@ -125,11 +127,20 @@ public class Paciente : MonoBehaviour
             collision.gameObject.SetActive(false);
             Debug.Log("RemedioUsado");
         }
-        if ((HassSirurgia) && (taskCompleted))
+        if ((HassCirurgia) && (taskCompleted))
         {
             if (collision.gameObject.tag == "Player")
             {
                 sirurgiaMiniGameObj.SetActive(true);
+                //cirugiaStarted = true;
+                if (pacienteInt == 1)
+                {
+                    sirurgiaMiniGame.cirurgia1Started = true;
+                }
+                if (pacienteInt == 2)
+                {
+                    sirurgiaMiniGame.cirurgia2Started = true;
+                }
             }
         }
     }
@@ -147,7 +158,7 @@ public class Paciente : MonoBehaviour
                 taskCompleted = true;
 
             }
-            if (sirurgiaMiniGame.sirurgiaCompleted)
+            if (sirurgiaMiniGame.cirurgiaCompleted)
             {
                 cirurgiaCompleted = true;
             }
@@ -155,15 +166,22 @@ public class Paciente : MonoBehaviour
             {
                 cirurgiaCompleted = false;
             }
+            /*if (sirurgiaMiniGame.cirurgiaFailed)
+            {
+                cirurgiaFailed = true;
+            }
+            else
+                cirurgiaFailed = false;*/
+
             if (taskCompleted) //usar os dois itens...
             {
                 Debug.Log("TaskConcluida");
 
-                if (HassSirurgia == false)
+                if (HassCirurgia == false)
                 {
                     EndTask();
                 }
-                if (HassSirurgia)
+                if (HassCirurgia)
                 {
                     if (cirurgiaCompleted)
                     {
@@ -189,11 +207,6 @@ public class Paciente : MonoBehaviour
             Destroy(obj);
        Destroy(gameObject);
         Debug.Log("DestruirObjeto");
-    }
-    /*public void NewPaciente()
-    {
-        taskManager.paciente1 = nextPaciente;
-        Debug.Log("NewPaciente");
     }*/
     private void EndTask()
     {
