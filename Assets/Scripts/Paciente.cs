@@ -143,6 +143,24 @@ public class Paciente : MonoBehaviour
                 }
             }
         }
+        if (collision.gameObject.name == "Maca")
+        {
+            pacienteInt = 1;
+        }
+        if (collision.gameObject.name == "Maca2")
+        {
+            pacienteInt = 2;
+        }
+    }
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+        taskManager = FindObjectOfType<TaskManager>();
+        game = FindObjectOfType<Game>();
+        sirurgiaMiniGameObj = GameObject.Find("SirurgiaMiniGame");
+        //find the sirurgiaMiniGame script on the object Scripts in the scene
+        sirurgiaMiniGame = FindObjectOfType<SirurgiaMinigame>();
+
     }
     private void Update()
     {

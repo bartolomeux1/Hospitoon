@@ -2159,9 +2159,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   game: {fileID: 300970569}
   paciente: {fileID: 1965479324}
-  paciente1: {fileID: 1965479323}
+  paciente1: {fileID: 3323246248386824137, guid: 94d65e8bd2c2a1a428af667d0730a0f7, type: 3}
   paciente1Spawn: {fileID: 1479393749}
-  paciente2: {fileID: 390817373}
+  paciente2: {fileID: 4822451214057798011, guid: 8e789543f91764d4e8d4b77d92dded8a, type: 3}
   paciente2Spawn: {fileID: 194690207}
   newPaciente: {fileID: 1275183325}
   newPaciente2: {fileID: 426644087}
