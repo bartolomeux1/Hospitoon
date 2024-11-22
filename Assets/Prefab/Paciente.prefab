@@ -107,7 +107,6 @@ GameObject:
   - component: {fileID: 3052464140573190534}
   - component: {fileID: 5621118950490970902}
   - component: {fileID: 6506591624582253228}
-  - component: {fileID: 3595651406057146747}
   m_Layer: 0
   m_Name: Paciente
   m_TagString: Paciente
@@ -234,7 +233,7 @@ MonoBehaviour:
   - {fileID: 9100000, guid: f3e673090face9a419d0b80337a1b12a, type: 2}
   - {fileID: 9100000, guid: 0037b3021f2208f48afd98620ebfbe3f, type: 2}
   - {fileID: 9100000, guid: 7f5dabfe728d8934ba7068baa86db9eb, type: 2}
-  pView: {fileID: 3595651406057146747}
+  pView: {fileID: 0}
   animator: {fileID: 0}
 --- !u!135 &5621118950490970902
 SphereCollider:
@@ -278,28 +277,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3595651406057146747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3323246248386824137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  observableSearch: 2
-  ObservedComponents: []
-  sceneViewId: 0
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
 --- !u!1 &4307274999693488971
 GameObject:
   m_ObjectHideFlags: 0

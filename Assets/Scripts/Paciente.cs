@@ -157,10 +157,9 @@ public class Paciente : MonoBehaviour
         animator = GetComponent<Animator>();
         taskManager = FindObjectOfType<TaskManager>();
         game = FindObjectOfType<Game>();
-        sirurgiaMiniGameObj = GameObject.Find("SirurgiaMiniGame");
-        //find the sirurgiaMiniGame script on the object Scripts in the scene
+        //sirurgiaMiniGameObj = GameObject.Find("SirurgiaMiniGame");
         sirurgiaMiniGame = FindObjectOfType<SirurgiaMinigame>();
-
+        
     }
     private void Update()
     {
