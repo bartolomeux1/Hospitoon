@@ -13,7 +13,8 @@ public class SirurgiaMinigame : MonoBehaviour
     public GameObject task2;
     public GameObject task3;
 
-    public GameObject sirurgiaMinigame;
+    public GameObject cirurgiaMinigame;
+    public GameObject objectiveTextObj;
     public Paciente paciente1;
     public Paciente paciente2;
 
@@ -55,15 +56,13 @@ public class SirurgiaMinigame : MonoBehaviour
     {
         if (cutpoints1 == 5) 
         {
-            cutpoints1++;
-            objective1Completed = true;
             objective.text = "objetivo 1 concluido";
             Invoke("Task2", 1);
             Invoke("ReturnButtons", 1);
+            objective1Completed = true;
         }
         if (stitchPoints == 5)
         {
-            stitchPoints++;
             objective2Completed = true;
             objective.text = "objetivo 2 concluido";
             Invoke("Task3", 1);
@@ -71,7 +70,6 @@ public class SirurgiaMinigame : MonoBehaviour
         }
         if (stitchPoints2 == 5)
         {
-            stitchPoints2++;
             objective3Completed = true;
             cirurgiaCompleted = true;
             objective.text = "cirurgia feita com sucesso";
@@ -106,12 +104,14 @@ public class SirurgiaMinigame : MonoBehaviour
         objective.text = "clique nos quadrados brancos para costurar a hemorragia interna";
         objective2Started = true;
         objective1Started = false;
+        cutpoints1 = 0;
     }
     private void Task3()
     {
         objective.text = "clique nos quadrados brancos para costurar a pele e finalizar a cirurgia";
         objective3Started = true;
         objective2Started = false;
+        stitchPoints = 0;
     }
     private void FailedMinigame()
     {
@@ -138,8 +138,9 @@ public class SirurgiaMinigame : MonoBehaviour
         objective1Completed = false;
         objective2Completed = false;
         objective3Completed = false;
-        objective.text = "clique nos quadrados brancos para cortar a pele";
-        sirurgiaMinigame.SetActive(false);
+        objective.text = "clique nos quadrados brancos para cortar a pele e fazer a cirurgia";
+        objectiveTextObj.SetActive(false);
+        cirurgiaMinigame.SetActive(false);
     }
     private void ReturnButtons()
     {
@@ -148,6 +149,8 @@ public class SirurgiaMinigame : MonoBehaviour
         button3task1.SetActive(true);
         button4task1.SetActive(true);
         button5task1.SetActive(true);
+
+        //cutpoints1++;
     }
     private void HideButtons()
     {
@@ -159,6 +162,6 @@ public class SirurgiaMinigame : MonoBehaviour
     }
     public void CloseMiniGame()
     {
-        sirurgiaMinigame.SetActive(false);
+        cirurgiaMinigame.SetActive(false);
     }
 }

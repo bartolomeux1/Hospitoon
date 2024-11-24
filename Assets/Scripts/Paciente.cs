@@ -14,6 +14,7 @@ public class Paciente : MonoBehaviour
     public TaskManager taskManager;
 
     public GameObject sirurgiaMiniGameObj;
+    public GameObject cirurgiaMiniGameText;
     public SirurgiaMinigame sirurgiaMiniGame;
 
     public string objectTag1;
@@ -21,6 +22,7 @@ public class Paciente : MonoBehaviour
 
     public GameObject taskObject1Ui;
     public GameObject taskObject2Ui;
+    public GameObject text;
 
     public bool objective1Completed = false;
     public bool objective2Completed = false;
@@ -37,7 +39,6 @@ public class Paciente : MonoBehaviour
 
         if (collision.gameObject.tag == objectTag1)
         {
-            //taskManager.objective1Completed = true;
             objective1Completed = true;
             taskObject1Ui.SetActive(false);
             if (pacienteInt == 1)
@@ -126,30 +127,23 @@ public class Paciente : MonoBehaviour
 
             collision.gameObject.SetActive(false);
             Debug.Log("RemedioUsado");
-        }
-        if ((HassCirurgia) && (taskCompleted))
-        {
-            if (collision.gameObject.tag == "Player")
+
+            if ((HassCirurgia) && (taskCompleted))
             {
-                sirurgiaMiniGameObj.SetActive(true);
-                //cirugiaStarted = true;
-                if (pacienteInt == 1)
+                if (collision.gameObject.tag == "Player")
                 {
-                    sirurgiaMiniGame.cirurgia1Started = true;
-                }
-                if (pacienteInt == 2)
-                {
-                    sirurgiaMiniGame.cirurgia2Started = true;
+                    sirurgiaMiniGameObj.SetActive(true);
+                    cirurgiaMiniGameText.SetActive(true);
+                    if (pacienteInt == 1)
+                    {
+                        sirurgiaMiniGame.cirurgia1Started = true;
+                    }
+                    if (pacienteInt == 2)
+                    {
+                        sirurgiaMiniGame.cirurgia2Started = true;
+                    }
                 }
             }
-        }
-        if (collision.gameObject.name == "Maca")
-        {
-            pacienteInt = 1;
-        }
-        if (collision.gameObject.name == "Maca2")
-        {
-            pacienteInt = 2;
         }
     }
     private void Awake()
@@ -157,7 +151,6 @@ public class Paciente : MonoBehaviour
         animator = GetComponent<Animator>();
         taskManager = FindObjectOfType<TaskManager>();
         game = FindObjectOfType<Game>();
-        //sirurgiaMiniGameObj = GameObject.Find("SirurgiaMiniGame");
         sirurgiaMiniGame = FindObjectOfType<SirurgiaMinigame>();
         
     }
@@ -183,12 +176,6 @@ public class Paciente : MonoBehaviour
             {
                 cirurgiaCompleted = false;
             }
-            /*if (sirurgiaMiniGame.cirurgiaFailed)
-            {
-                cirurgiaFailed = true;
-            }
-            else
-                cirurgiaFailed = false;*/
 
             if (taskCompleted) //usar os dois itens...
             {
@@ -209,29 +196,29 @@ public class Paciente : MonoBehaviour
                 }
             }
         }
-        //if (taskCompleted== false)
-        {
-           // cirurgiaCompleted = false;
+        if (Input.GetKeyDown(KeyCode.I))
+        if ((HassCirurgia) && (taskCompleted))
+        {            
+            sirurgiaMiniGameObj.SetActive(true);
+            cirurgiaMiniGameText.SetActive(true);
+            if (pacienteInt == 1)
+            {
+                sirurgiaMiniGame.cirurgia1Started = true;
+            }
+            if (pacienteInt == 2)
+            {
+                sirurgiaMiniGame.cirurgia2Started = true;
+            }
         }
-
-
+        if ((HassCirurgia) && (taskCompleted))
+            text.SetActive(true);
     }
-
-    /*public void DestruirObjeto(string objName)
-    {
-       /* GameObject obj = GameObject.Find(objName);
-        if (obj != null)
-            Destroy(obj);
-       Destroy(gameObject);
-        Debug.Log("DestruirObjeto");
-    }*/
     private void EndTask()
     {
         Debug.Log("EndTask");
 
         if (pacienteInt == 1)
         {
-            //DestruirObjeto("gameObject");
             taskManager.task1Completed = true;
             proximoPaciente1 = true;
             taskManager.pauseTimer1 = true;
@@ -241,7 +228,6 @@ public class Paciente : MonoBehaviour
         }
         else if (pacienteInt == 2)
         {
-            //DestruirObjeto("Paciente2(Clone)");
             taskManager.task2Completed = true;
             proximoPaciente2 = true;
             taskManager.pauseTimer2 = true;
@@ -249,7 +235,5 @@ public class Paciente : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        
-        //Destroy(gameObject);
     }
 }

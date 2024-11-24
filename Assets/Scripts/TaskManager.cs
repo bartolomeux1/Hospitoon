@@ -145,7 +145,7 @@ public class TaskManager : MonoBehaviour
     {
         Debug.Log("Chamando StartMaca2Task");
         double currentTime = PhotonNetwork.Time;
-        double taskStartTime = currentTime + Random.Range(3, 7); ; // espera de 3/7 segundos
+        double taskStartTime = currentTime + Random.Range(1, 3); ; // espera de 3/7 segundos
 
         StartCoroutine(WaitAndExecuteTask2(taskStartTime));
     }
