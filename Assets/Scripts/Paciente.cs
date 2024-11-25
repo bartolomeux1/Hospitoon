@@ -72,6 +72,9 @@ public class Paciente : MonoBehaviour
 
             game.podeAddTimer = false; // faz com que seja adicionado apenas uma vez
 
+            if (!GetComponent<AudioSource>().isPlaying)
+                GetComponent<AudioSource>().Play();
+
             collision.gameObject.SetActive(false);
 
             Debug.Log("SiringaUsada");
@@ -126,6 +129,9 @@ public class Paciente : MonoBehaviour
             }
 
             game.podeAddTimer = false; // faz com que seja adicionado apenas uma vez
+
+            if (!GetComponent<AudioSource>().isPlaying)
+                GetComponent<AudioSource>().Play();
 
             collision.gameObject.SetActive(false);
             Debug.Log("RemedioUsado");
@@ -238,6 +244,8 @@ public class Paciente : MonoBehaviour
 
         if (pacienteInt == 1)
         {
+            if (!GetComponent<AudioSource>().isPlaying)
+                GetComponent<AudioSource>().Play();
             taskManager.task1Completed = true;
             proximoPaciente1 = true;
             taskManager.pauseTimer1 = true;
@@ -256,6 +264,8 @@ public class Paciente : MonoBehaviour
         }
         if (pacienteInt == 2)
         {
+            if (!GetComponent<AudioSource>().isPlaying)
+                GetComponent<AudioSource>().Play();
             taskManager.task2Completed = true;
             proximoPaciente2 = true;
             taskManager.pauseTimer2 = true;
@@ -274,6 +284,8 @@ public class Paciente : MonoBehaviour
         }
         if (pacienteInt == 3)
         {
+            if (!GetComponent<AudioSource>().isPlaying)
+                GetComponent<AudioSource>().Play();
             taskManager.task3Completed = true;
             proximoPaciente3 = true;
             taskManager.pauseTimer3 = true;
@@ -292,9 +304,10 @@ public class Paciente : MonoBehaviour
         }
         if (pacienteInt == 4)
         {
+            if (!GetComponent<AudioSource>().isPlaying)
+                GetComponent<AudioSource>().Play();
             taskManager.task4Completed = true;
             proximoPaciente4 = true;
-            taskManager.paciente4Proximo = true;
             taskManager.pauseTimer4 = true;
             Debug.Log("Paciente4 proximo?");
             Destroy(gameObject);

@@ -35,6 +35,7 @@ public class CharacterMovement : MonoBehaviourPunCallbacks
         animController = graphicPlayer.GetComponent<Animator>();
         spriteRenderer = graphicPlayer.GetComponent<SpriteRenderer>();
 
+
         // Localiza o script 'Game' na 'mainCamera'
         GameObject cameraObj = GameObject.FindWithTag("Scripts");
         if (cameraObj != null)
@@ -59,6 +60,10 @@ public class CharacterMovement : MonoBehaviourPunCallbacks
         {
             animController.SetBool("isWalking", true);
 
+            if (!GetComponent<AudioSource>().isPlaying)
+            GetComponent<AudioSource>().Play();
+
+
             if ((transform.position - buffer).normalized == Vector3.up)
             {
                 animController.Play("WalkUp");
@@ -81,6 +86,7 @@ public class CharacterMovement : MonoBehaviourPunCallbacks
         else
         {
             animController.SetBool("isWalking", false);
+            GetComponent<AudioSource>().Pause();
         }
 
 

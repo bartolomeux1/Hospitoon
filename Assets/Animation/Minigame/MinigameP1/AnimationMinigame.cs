@@ -5,6 +5,9 @@ using UnityEngine;
 public class AnimationMinigame : MonoBehaviour
 {
     public SirurgiaMinigame sirurgiaMinigame;
+
+    public Animator sirurgiaAnimator;
+
     public Animator corteAnimator;
     public Animator sangueAnimator;
 
@@ -40,6 +43,7 @@ public class AnimationMinigame : MonoBehaviour
         if (sirurgiaMinigame.objective2Started)
         {
             PT2.SetActive(true);
+            sirurgiaAnimator.SetBool("isInside", true);
         }
         /*if (sirurgiaMinigame.objective2Completed)
         {
@@ -59,6 +63,7 @@ public class AnimationMinigame : MonoBehaviour
         {
             PT2.SetActive(false);
             PT3.SetActive(true);
+            sirurgiaAnimator.SetBool("isInside", false);
         }
         if (sirurgiaMinigame.stitchPoints2 > 0)
         {

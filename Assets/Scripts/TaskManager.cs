@@ -197,7 +197,7 @@ public class TaskManager : MonoBehaviour
                 task3Completed = false;
                 paciente.proximoPaciente3 = false;
             }
-            if ((paciente.proximoPaciente4 && PhotonNetwork.IsMasterClient) || (paciente4Proximo && PhotonNetwork.IsMasterClient))
+            if ((paciente.proximoPaciente4 && PhotonNetwork.IsMasterClient))
             {
                 photonView.RPC("StartMaca4Task", RpcTarget.All);
                 task4Completed = false;
@@ -210,7 +210,7 @@ public class TaskManager : MonoBehaviour
     void StartMaca1Task()
     {
         double currentTime = PhotonNetwork.Time;
-        double taskStartTime = currentTime + Random.Range(1, 3); // espera de 5/15 segundos
+        double taskStartTime = currentTime + Random.Range(3, 5); // espera de 5/15 segundos
 
         StartCoroutine(WaitAndExecuteTask(taskStartTime));
     }
@@ -219,7 +219,7 @@ public class TaskManager : MonoBehaviour
     {
         //Debug.Log("Chamando StartMaca2Task");
         double currentTime = PhotonNetwork.Time;
-        double taskStartTime = currentTime + Random.Range(1, 3); // espera de 3/10 segundos
+        double taskStartTime = currentTime + Random.Range(3, 5); // espera de 3/10 segundos
 
         StartCoroutine(WaitAndExecuteTask2(taskStartTime));
     }
@@ -227,7 +227,7 @@ public class TaskManager : MonoBehaviour
     void StartMaca3Task()
     {
         double currentTime = PhotonNetwork.Time;
-        double taskStartTime = currentTime + Random.Range(1, 3);
+        double taskStartTime = currentTime + Random.Range(3, 5);
 
         StartCoroutine(WaitAndExecuteTask3(taskStartTime));
     }
@@ -236,7 +236,7 @@ public class TaskManager : MonoBehaviour
     {
         Debug.Log("Chamando StartMaca4Task");
         double currentTime = PhotonNetwork.Time;
-        double taskStartTime = currentTime + Random.Range(2, 4);
+        double taskStartTime = currentTime + Random.Range(3, 5);
         paciente4Proximo = false;
 
         StartCoroutine(WaitAndExecuteTask4(taskStartTime));
@@ -549,7 +549,7 @@ public class TaskManager : MonoBehaviour
         {
             checkSiringa = false;
             checkBisturi = false;
-            paciente.proximoPaciente3 = true;
+            paciente.proximoPaciente4 = true;
             task4Completed = false;
             task4CompletedCouter++;
         }
@@ -570,13 +570,13 @@ public class TaskManager : MonoBehaviour
         {
             NewPaciente3();
             //task3CompletedCouter++;
-            timerMaca3 = +18;
+            timerMaca3 = +23;
         }
         if (task4CompletedCouter > 3)
         {
             NewPaciente4();
             //task4CompletedCouter++;
-            timerMaca4 = +18;
+            timerMaca4 = +23;
         }
         if ((task1CompletedCouter > 0)) 
         { 

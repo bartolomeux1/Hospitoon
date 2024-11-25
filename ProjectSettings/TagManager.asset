@@ -13,6 +13,7 @@ TagManager:
   - RemedioMao
   - Remedio
   - Scripts
+  - AudioMngr
   layers:
   - Default
   - TransparentFX
