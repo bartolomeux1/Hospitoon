@@ -462,8 +462,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'cuide dos pacientes e leve os itens necessarios '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2d82efbf378006047b5ca98245fe1c88, type: 2}
-  m_sharedMaterial: {fileID: -650732873377020663, guid: 2d82efbf378006047b5ca98245fe1c88, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1237d616f6e2e2b4094cefb8ffd7f333, type: 2}
+  m_sharedMaterial: {fileID: -650732873377020663, guid: 1237d616f6e2e2b4094cefb8ffd7f333, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
