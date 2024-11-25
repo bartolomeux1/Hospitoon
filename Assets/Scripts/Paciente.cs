@@ -274,19 +274,23 @@ public class Paciente : MonoBehaviour
             if (pacienteInt == 1)
             {
                 sirurgiaMiniGame.cirurgia1Started = true;
+                    taskManager.timerAtual1 += 15;
             }
             if (pacienteInt == 2)
             {
                 sirurgiaMiniGame.cirurgia2Started = true;
-            }
+                    taskManager.timerAtual2 += 15;
+                }
             if (pacienteInt == 3)
             {
                 sirurgiaMiniGame.cirurgia3Started = true;
-            }
+                    taskManager.timerAtual3 += 15;
+                }
             if (pacienteInt == 4)
             {
                 sirurgiaMiniGame.cirurgia4Started = true;
-            }
+                    taskManager.timerAtual4 += 15;
+                }
         }
         if ((HassCirurgia) && (taskCompleted))
             text.SetActive(true);

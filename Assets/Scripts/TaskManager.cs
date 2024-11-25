@@ -210,7 +210,7 @@ public class TaskManager : MonoBehaviour
     void StartMaca1Task()
     {
         double currentTime = PhotonNetwork.Time;
-        double taskStartTime = currentTime + Random.Range(4, 6); // espera de 7/15 segundos.
+        double taskStartTime = currentTime + Random.Range(5, 15); // espera de 5/15 segundos.
 
         StartCoroutine(WaitAndExecuteTask(taskStartTime));
     }
@@ -218,7 +218,7 @@ public class TaskManager : MonoBehaviour
     void StartMaca2Task()
     {
         double currentTime = PhotonNetwork.Time;
-        double taskStartTime = currentTime + Random.Range(3, 6); // espera de 3/10 segundos.
+        double taskStartTime = currentTime + Random.Range(3, 10); // espera de 3/10 segundos.
 
         StartCoroutine(WaitAndExecuteTask2(taskStartTime));
     }
@@ -226,7 +226,7 @@ public class TaskManager : MonoBehaviour
     void StartMaca3Task()
     {
         double currentTime = PhotonNetwork.Time;
-        double taskStartTime = currentTime + Random.Range(3, 6); // espera de 10/20 segundos.
+        double taskStartTime = currentTime + Random.Range(5, 10); // espera de 5/20 segundos.
 
         StartCoroutine(WaitAndExecuteTask3(taskStartTime));
     }
@@ -234,7 +234,7 @@ public class TaskManager : MonoBehaviour
     void StartMaca4Task()
     {
         double currentTime = PhotonNetwork.Time;
-        double taskStartTime = currentTime + Random.Range(4, 6); //espera de 3/5 segundos.
+        double taskStartTime = currentTime + Random.Range(3, 5); //espera de 3/5 segundos.
         paciente4Proximo = false;
 
         StartCoroutine(WaitAndExecuteTask4(taskStartTime));
@@ -569,7 +569,7 @@ public class TaskManager : MonoBehaviour
             //task3CompletedCouter++;
             timerMaca3 = +20;
         }
-        if (task4CompletedCouter > 3)
+        if (task4CompletedCouter >= 0)
         {
             NewPaciente4();
             //task4CompletedCouter++;

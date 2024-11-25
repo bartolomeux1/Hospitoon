@@ -56,7 +56,7 @@ public class Game : MonoBehaviour
     }
     private void Update()
     {
-        if (pontuacao < 0)
+        if (pontuacao <= 0)
         {
             pontuacao = 0;
         }
@@ -107,6 +107,9 @@ public class Game : MonoBehaviour
     public void SubPontuacao(int n)
     {
         pontuacao -= n;
+
+        if(pontuacao <=0)
+            pontuacao = 0;
         Debug.Log("Subtraiu");
         return;
     }
