@@ -45,31 +45,51 @@ public class Paciente : MonoBehaviour
             taskObject1Ui.SetActive(false);
             if (pacienteInt == 1)
             {
-                if (taskManager.timerAtual1 >=8)
-                    taskManager.timerAtual1 = 10;
+                if (!HassCirurgia)
+                {
+                    if (taskManager.timerAtual1 >= 8)
+                        taskManager.timerAtual1 = 10;
+                    else
+                        taskManager.timerAtual1 += 2;
+                }
                 else
-                    taskManager.timerAtual1 += 2;
+                    taskManager.timerAtual1 += 3;
             }
             if (pacienteInt == 2)
             {
-                if (taskManager.timerAtual2 >= 8)
-                    taskManager.timerAtual2 = 10;
+                if (!HassCirurgia)
+                {
+                    if (taskManager.timerAtual2 >= 8)
+                        taskManager.timerAtual2 = 10;
+                    else
+                        taskManager.timerAtual2 += 2;
+                }
                 else
-                    taskManager.timerAtual2 += 2;
+                    taskManager.timerAtual2 += 3;
             }
             if (pacienteInt == 3)
             {
-                if (taskManager.timerAtual3 >=8)
-                    taskManager.timerAtual3 = 10;
+                if (!HassCirurgia)
+                {
+                    if (taskManager.timerAtual3 >= 8)
+                        taskManager.timerAtual3 = 10;
+                    else
+                        taskManager.timerAtual3 += 2;
+                }
                 else
-                    taskManager.timerAtual3 += 2;
+                    taskManager.timerAtual3 += 3;               
             }
             if (pacienteInt == 4)
             {
-                if (taskManager.timerAtual4 >=8)
-                    taskManager.timerAtual4 = 10;
+                if (!HassCirurgia)
+                {
+                    if (taskManager.timerAtual4 >= 8)
+                        taskManager.timerAtual4 = 10;
+                    else
+                        taskManager.timerAtual4 += 2;
+                }
                 else
-                    taskManager.timerAtual4 += 2;
+                    taskManager.timerAtual4 += 3;
             }
             if (game.podeAddTimer == true)
             {
@@ -101,62 +121,51 @@ public class Paciente : MonoBehaviour
 
             if (pacienteInt == 1)
             {
-                if (taskManager.timerAtual1 >= 8)
-                    taskManager.timerAtual1 = 10;
-                else
-                    taskManager.timerAtual1 += 2;
-                if (HassCirurgia)
+                if (!HassCirurgia)
                 {
-                    if (cirurgiaCompleted)
-                    {
+                    if (taskManager.timerAtual1 >= 8)
                         taskManager.timerAtual1 = 10;
-                    }
+                    else
+                        taskManager.timerAtual1 += 2;
                 }
+                else 
+                    taskManager.timerAtual1 += 3;
             }
             if (pacienteInt == 2)
             {
-                if (taskManager.timerAtual1 >= 8)
-                    taskManager.timerAtual2 = 10;
-                else
-                    taskManager.timerAtual2 += 2;
-
-                if (HassCirurgia)
+                if (!HassCirurgia)
                 {
-                    if (cirurgiaCompleted)
-                    {
-                        taskManager.timerAtual1 = 10;
-                    }
+                    if (taskManager.timerAtual2 >= 8)
+                        taskManager.timerAtual2 = 10;
+                    else
+                        taskManager.timerAtual2 += 2;
                 }
+                else
+                    taskManager.timerAtual2 += 3;
             }
             if (pacienteInt == 3)
             {
-                if (taskManager.timerAtual1 >= 8)
-                    taskManager.timerAtual3 = 10;
-                else
-                    taskManager.timerAtual3 += 2;
-
-                if (HassCirurgia)
+                if (!HassCirurgia)
                 {
-                    if (cirurgiaCompleted)
-                    {
-                        taskManager.timerAtual1 = 10;
-                    }
+                    if (taskManager.timerAtual3 >= 8)
+                        taskManager.timerAtual3 = 10;
+                    else
+                        taskManager.timerAtual3 += 2;
                 }
+                else
+                    taskManager.timerAtual3 += 3;               
             }
             if (pacienteInt == 4)
             {
-                if (taskManager.timerAtual1 >= 8)
-                    taskManager.timerAtual4 = 10;
-                else
-                    taskManager.timerAtual4 += 2;
-
-                if (HassCirurgia)
+                if (!HassCirurgia)
                 {
-                    if (cirurgiaCompleted)
-                    {
-                        taskManager.timerAtual1 = 10;
-                    }
+                    if (taskManager.timerAtual4 >= 8)
+                        taskManager.timerAtual4 = 10;
+                    else
+                        taskManager.timerAtual4 += 2;
                 }
+                else
+                    taskManager.timerAtual4 += 3;
             }
             if (game.podeAddTimer == true)
             {
