@@ -54,6 +54,13 @@ public class Game : MonoBehaviour
         progressTimerText.value = 0;
         progressTimerText.maxValue = 1; //faz ela terminar em 1
     }
+    private void Update()
+    {
+        if (pontuacao < 0)
+        {
+            pontuacao = 0;
+        }
+    }
     void FixedUpdate()
     {
         TimerRun();

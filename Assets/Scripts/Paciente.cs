@@ -45,29 +45,29 @@ public class Paciente : MonoBehaviour
             taskObject1Ui.SetActive(false);
             if (pacienteInt == 1)
             {
-                if (taskManager.timerAtual1 > 10 && taskManager.timerAtual1 < 12)
-                    taskManager.timerAtual1 = 12;
+                if (taskManager.timerAtual1 >=8)
+                    taskManager.timerAtual1 = 10;
                 else
                     taskManager.timerAtual1 += 2;
             }
             if (pacienteInt == 2)
             {
-                if (taskManager.timerAtual2 > 10 && taskManager.timerAtual2 < 12)
-                    taskManager.timerAtual2 = 12;
+                if (taskManager.timerAtual2 >= 8)
+                    taskManager.timerAtual2 = 10;
                 else
                     taskManager.timerAtual2 += 2;
             }
             if (pacienteInt == 3)
             {
-                if (taskManager.timerAtual3 > 10 && taskManager.timerAtual3 < 12)
-                    taskManager.timerAtual3 = 12;
+                if (taskManager.timerAtual3 >=8)
+                    taskManager.timerAtual3 = 10;
                 else
                     taskManager.timerAtual3 += 2;
             }
             if (pacienteInt == 4)
             {
-                if (taskManager.timerAtual4 > 10 && taskManager.timerAtual4 < 12)
-                    taskManager.timerAtual4 = 12;
+                if (taskManager.timerAtual4 >=8)
+                    taskManager.timerAtual4 = 10;
                 else
                     taskManager.timerAtual4 += 2;
             }
@@ -101,8 +101,8 @@ public class Paciente : MonoBehaviour
 
             if (pacienteInt == 1)
             {
-                if (taskManager.timerAtual1 > 10 && taskManager.timerAtual1 < 12)
-                    taskManager.timerAtual1 = 12;
+                if (taskManager.timerAtual1 >= 8)
+                    taskManager.timerAtual1 = 10;
                 else
                     taskManager.timerAtual1 += 2;
                 if (HassCirurgia)
@@ -115,8 +115,8 @@ public class Paciente : MonoBehaviour
             }
             if (pacienteInt == 2)
             {
-                if (taskManager.timerAtual2 > 10 && taskManager.timerAtual2 < 12)
-                    taskManager.timerAtual2 = 12;
+                if (taskManager.timerAtual1 >= 8)
+                    taskManager.timerAtual2 = 10;
                 else
                     taskManager.timerAtual2 += 2;
 
@@ -130,8 +130,8 @@ public class Paciente : MonoBehaviour
             }
             if (pacienteInt == 3)
             {
-                if (taskManager.timerAtual3 > 10 && taskManager.timerAtual3 < 12)
-                    taskManager.timerAtual3 = 12;
+                if (taskManager.timerAtual1 >= 8)
+                    taskManager.timerAtual3 = 10;
                 else
                     taskManager.timerAtual3 += 2;
 
@@ -145,8 +145,8 @@ public class Paciente : MonoBehaviour
             }
             if (pacienteInt == 4)
             {
-                if (taskManager.timerAtual4 > 10 && taskManager.timerAtual4 < 12)
-                    taskManager.timerAtual4 = 12;
+                if (taskManager.timerAtual1 >= 8)
+                    taskManager.timerAtual4 = 10;
                 else
                     taskManager.timerAtual4 += 2;
 
@@ -257,7 +257,7 @@ public class Paciente : MonoBehaviour
                 }
             }
         }
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.F))
         if ((HassCirurgia) && (taskCompleted))
         {            
             sirurgiaMiniGameObj.SetActive(true);

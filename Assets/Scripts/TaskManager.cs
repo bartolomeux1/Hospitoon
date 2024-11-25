@@ -210,16 +210,15 @@ public class TaskManager : MonoBehaviour
     void StartMaca1Task()
     {
         double currentTime = PhotonNetwork.Time;
-        double taskStartTime = currentTime + Random.Range(3, 5); // espera de 5/15 segundos
+        double taskStartTime = currentTime + Random.Range(7, 15); // espera de 7/15 segundos.
 
         StartCoroutine(WaitAndExecuteTask(taskStartTime));
     }
     [PunRPC]
     void StartMaca2Task()
     {
-        //Debug.Log("Chamando StartMaca2Task");
         double currentTime = PhotonNetwork.Time;
-        double taskStartTime = currentTime + Random.Range(3, 5); // espera de 3/10 segundos
+        double taskStartTime = currentTime + Random.Range(3, 10); // espera de 3/10 segundos.
 
         StartCoroutine(WaitAndExecuteTask2(taskStartTime));
     }
@@ -227,16 +226,15 @@ public class TaskManager : MonoBehaviour
     void StartMaca3Task()
     {
         double currentTime = PhotonNetwork.Time;
-        double taskStartTime = currentTime + Random.Range(3, 5);
+        double taskStartTime = currentTime + Random.Range(10, 20); // espera de 10/20 segundos.
 
         StartCoroutine(WaitAndExecuteTask3(taskStartTime));
     }
     [PunRPC]
     void StartMaca4Task()
     {
-        Debug.Log("Chamando StartMaca4Task");
         double currentTime = PhotonNetwork.Time;
-        double taskStartTime = currentTime + Random.Range(3, 5);
+        double taskStartTime = currentTime + Random.Range(3, 5); //espera de 3/5 segundos.
         paciente4Proximo = false;
 
         StartCoroutine(WaitAndExecuteTask4(taskStartTime));
@@ -421,8 +419,7 @@ public class TaskManager : MonoBehaviour
             paciente3Clone = null;
             paciente.proximoPaciente3 = true;
 
-            if(timerAtual3 <= 0)
-                Debug.Log("Subtraindo 2 pontos");   
+            if(timerAtual3 <= 0)  
                 game.SubPontuacao(2);
         }
     }
@@ -558,45 +555,45 @@ public class TaskManager : MonoBehaviour
         {
             NewPaciente1();
             //task1CanceledCouter++;
-            timerMaca1 = +18;
+            timerMaca1 = +20;
         }
         if (task2CompletedCouter > 3)
         {
             NewPaciente2();
             //task2CanceledCouter++;
-            timerMaca2 = +18;
+            timerMaca2 = +20;
         }
         if (task3CompletedCouter > 3)
         {
             NewPaciente3();
             //task3CompletedCouter++;
-            timerMaca3 = +23;
+            timerMaca3 = +20;
         }
         if (task4CompletedCouter > 3)
         {
             NewPaciente4();
             //task4CompletedCouter++;
-            timerMaca4 = +23;
+            timerMaca4 = +20;
         }
         if ((task1CompletedCouter > 0)) 
         { 
             BackuPaciente1();
-            timerMaca1 = 12;
+            timerMaca1 = 10;
         }
         if ((task2CompletedCouter > 0))
         {
             BackuPaciente2();
-            timerMaca2 = 12;
+            timerMaca2 = 10;
         }
         if (task3CompletedCouter > 0)
         {
             BackuPaciente3();
-            timerMaca3 = 12;
+            timerMaca3 = 10;
         }
         if (task1CompletedCouter > 0)
         {
             BackuPaciente4();
-            timerMaca4 = 12;
+            timerMaca4 = 10;
         }
     }
     public void Maca1Task1()
