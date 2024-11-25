@@ -57,6 +57,20 @@ public class Paciente : MonoBehaviour
                 else
                     taskManager.timerAtual2 += 2;
             }
+            if (pacienteInt == 3)
+            {
+                if (taskManager.timerAtual3 > 10 && taskManager.timerAtual3 < 12)
+                    taskManager.timerAtual3 = 12;
+                else
+                    taskManager.timerAtual3 += 2;
+            }
+            if (pacienteInt == 4)
+            {
+                if (taskManager.timerAtual4 > 10 && taskManager.timerAtual4 < 12)
+                    taskManager.timerAtual4 = 12;
+                else
+                    taskManager.timerAtual4 += 2;
+            }
             if (game.podeAddTimer == true)
             {
                 game.AddTimer(2); //adiciona o tempo ao interagir com paciente
@@ -105,6 +119,36 @@ public class Paciente : MonoBehaviour
                     taskManager.timerAtual2 = 12;
                 else
                     taskManager.timerAtual2 += 2;
+
+                if (HassCirurgia)
+                {
+                    if (cirurgiaCompleted)
+                    {
+                        taskManager.timerAtual1 = 10;
+                    }
+                }
+            }
+            if (pacienteInt == 3)
+            {
+                if (taskManager.timerAtual3 > 10 && taskManager.timerAtual3 < 12)
+                    taskManager.timerAtual3 = 12;
+                else
+                    taskManager.timerAtual3 += 2;
+
+                if (HassCirurgia)
+                {
+                    if (cirurgiaCompleted)
+                    {
+                        taskManager.timerAtual1 = 10;
+                    }
+                }
+            }
+            if (pacienteInt == 4)
+            {
+                if (taskManager.timerAtual4 > 10 && taskManager.timerAtual4 < 12)
+                    taskManager.timerAtual4 = 12;
+                else
+                    taskManager.timerAtual4 += 2;
 
                 if (HassCirurgia)
                 {

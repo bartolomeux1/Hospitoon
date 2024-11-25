@@ -639,7 +639,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2011519058}
   m_Father: {fileID: 1656202309}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -6431,7 +6432,6 @@ RectTransform:
   - {fileID: 869595037}
   - {fileID: 1355705280}
   - {fileID: 814914870}
-  - {fileID: 2011519058}
   - {fileID: 1920888466}
   m_Father: {fileID: 1656202309}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12285,6 +12285,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0.56
       objectReference: {fileID: 0}
+    - target: {fileID: 7122126651825035406, guid: 07d77d254a7ebd740bfc90cbae454a83, type: 3}
+      propertyPath: m_text
+      value: i
+      objectReference: {fileID: 0}
     - target: {fileID: 7316228157198381129, guid: 07d77d254a7ebd740bfc90cbae454a83, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.2269359
@@ -15196,17 +15200,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2011519057}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2085115607}
-  m_Father: {fileID: 797564448}
+  m_Father: {fileID: 62720247}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 530.4313, y: 197.28046}
+  m_AnchoredPosition: {x: 539.60944, y: 1.8079529}
   m_SizeDelta: {x: 73.1376, y: 53.4391}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2011519059
@@ -16495,6 +16499,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PacienteComSirurgia3
       objectReference: {fileID: 0}
+    - target: {fileID: 8304744323155648216, guid: 6cd5037a836ab7f43aa63d8ab73f04ea, type: 3}
+      propertyPath: m_text
+      value: i
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16640,6 +16648,10 @@ PrefabInstance:
     - target: {fileID: 3515718315075596669, guid: 9bc167b29b5f2e14bb9c6c868d6f1484, type: 3}
       propertyPath: m_Name
       value: PacienteComSirurgia4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6863279674568461333, guid: 9bc167b29b5f2e14bb9c6c868d6f1484, type: 3}
+      propertyPath: m_text
+      value: i
       objectReference: {fileID: 0}
     - target: {fileID: 7359115565170198086, guid: 9bc167b29b5f2e14bb9c6c868d6f1484, type: 3}
       propertyPath: m_LocalPosition.x
@@ -17024,6 +17036,10 @@ PrefabInstance:
     - target: {fileID: 7990290472421587975, guid: edc60dd057c5bd5439a3d4088c3559d1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093446627873342465, guid: edc60dd057c5bd5439a3d4088c3559d1, type: 3}
+      propertyPath: m_text
+      value: i
       objectReference: {fileID: 0}
     - target: {fileID: 8751284770180006988, guid: edc60dd057c5bd5439a3d4088c3559d1, type: 3}
       propertyPath: sirurgiaMiniGameObj
