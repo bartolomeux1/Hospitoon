@@ -70,7 +70,7 @@ public class Game : MonoBehaviour
             maxTimer -= Time.deltaTime;
 
             // Atualiza o valor do timer no texto
-            timerText.text = "Time: " + Mathf.FloorToInt(maxTimer).ToString();
+            timerText.text = Mathf.FloorToInt(maxTimer).ToString();
             pontuacaoText.text = pontuacao.ToString();
             // Calcula o progresso para a barra (normalizando entre 0 e 1)
             float progress = Mathf.Clamp01(maxTimer / timer);
@@ -79,7 +79,7 @@ public class Game : MonoBehaviour
             // Se o timer atingir 0, parar o progresso
             if (maxTimer <= 0)
             {
-                timerText.text = "Time: 0";
+                timerText.text = "0";
 
                 imageFill.color = corSlider; //muda a cor pra preto
                 isTimerRunning = false;  // Para o timer
@@ -95,6 +95,12 @@ public class Game : MonoBehaviour
     public void AddPontuacao(int n)
     {
         pontuacao += n;
+        return;
+    }
+    public void SubPontuacao(int n)
+    {
+        pontuacao -= n;
+        return;
     }
     public void FeedBackStatus()
     {

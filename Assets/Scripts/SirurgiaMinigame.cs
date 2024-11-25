@@ -115,10 +115,13 @@ public class SirurgiaMinigame : MonoBehaviour
     }
     private void FailedMinigame()
     {
+        
         cirurgiaFailed = true;
         objective.text = "cirurgia falhou";
         HideButtons();
-        Invoke("EndMiniGame", 1);
+        Invoke("EndMiniGame", 0);
+        game.SubPontuacao(5);
+        return;
     }
     private void EndMiniGame()
     {

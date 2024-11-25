@@ -31,6 +31,8 @@ public class Paciente : MonoBehaviour
     public GameObject nextPaciente;
     public bool proximoPaciente1 = false;
     public bool proximoPaciente2 = false;
+    public bool proximoPaciente3 = false;
+    public bool proximoPaciente4 = false;
     public Animator animator;
 
     public int pacienteInt = 0;
@@ -57,15 +59,15 @@ public class Paciente : MonoBehaviour
             }
             if (game.podeAddTimer == true)
             {
-                game.AddTimer(5); //adiciona o tempo ao interagir com paciente
+                game.AddTimer(2); //adiciona o tempo ao interagir com paciente
                 if (taskManager.checkBisturi == false)
                 {
 
-                    game.AddPontuacao(2); //adiciona 3 na pontuação
+                    game.AddPontuacao(1); //adiciona 1 na pontuação
                     taskManager.checkSiringa = true;
                 }
                 if (taskManager.checkBisturi == true)
-                    game.AddPontuacao(3);
+                    game.AddPontuacao(1);
             }
 
             game.podeAddTimer = false; // faz com que seja adicionado apenas uma vez
@@ -111,15 +113,15 @@ public class Paciente : MonoBehaviour
             }
             if (game.podeAddTimer == true)
             {
-                game.AddTimer(5); //adiciona o tempo ao interagir com paciente
+                game.AddTimer(2); //adiciona o tempo ao interagir com paciente
                 if (taskManager.checkSiringa == false)
                 {
 
-                    game.AddPontuacao(2); //adiciona 3 na pontuação
+                    game.AddPontuacao(1); //adiciona 1 na pontuação
                     taskManager.checkBisturi = true;
                 }
                 if (taskManager.checkSiringa == true)
-                    game.AddPontuacao(3);
+                    game.AddPontuacao(1);
 
             }
 
@@ -191,6 +193,7 @@ public class Paciente : MonoBehaviour
                     {
                         cirurgiaCompleted = false;
                         EndTask();
+                        game.AddPontuacao(7);
                     }
 
                 }
@@ -224,6 +227,15 @@ public class Paciente : MonoBehaviour
             taskManager.pauseTimer1 = true;
             Debug.Log("Paciente1 proximo?");
             Destroy(gameObject);
+
+            if (taskManager.timerAtual1 <= 20 && taskManager.timerAtual1 > 6)
+                game.AddPontuacao(3);
+
+            if (taskManager.timerAtual1 <= 6 && taskManager.timerAtual1 > 3)
+                game.AddPontuacao(2);
+
+            if (taskManager.timerAtual1 <= 3 && taskManager.timerAtual1 > 0)
+                game.AddPontuacao(1);
             return;
         }
         else if (pacienteInt == 2)
@@ -233,6 +245,15 @@ public class Paciente : MonoBehaviour
             taskManager.pauseTimer2 = true;
             Debug.Log("Paciente2 proximo?");
             Destroy(gameObject);
+
+            if (taskManager.timerAtual2 <= 20 && taskManager.timerAtual2 > 6)
+                game.AddPontuacao(3);
+
+            if (taskManager.timerAtual2 <= 6 && taskManager.timerAtual2 > 3)
+                game.AddPontuacao(2);
+
+            if (taskManager.timerAtual2 <= 3 && taskManager.timerAtual2 > 0)
+                game.AddPontuacao(1);
             return;
         }
     }

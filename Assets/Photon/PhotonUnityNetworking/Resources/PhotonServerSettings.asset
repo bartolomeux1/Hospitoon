@@ -59,6 +59,10 @@ MonoBehaviour:
   - DestroyPaciente2
   - StartMaca2Task
   - ChangeSkin
+  - StartMaca3Task
+  - DestroyPaciente3
+  - DestroyPaciente4
+  - StartMaca4Task
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
