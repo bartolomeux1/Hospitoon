@@ -20,6 +20,8 @@ public class SirurgiaMinigame : MonoBehaviour
 
     public bool cirurgia1Started = false;
     public bool cirurgia2Started = false;
+    public bool cirurgia3Started = false;
+    public bool cirurgia4Started = false;
 
     public Text objective;
 
@@ -85,6 +87,20 @@ public class SirurgiaMinigame : MonoBehaviour
         if(cirurgia2Started)
         {
             if (taskManager.timerAtual2 <= 0)
+            {
+                FailedMinigame();
+            }
+        }
+        if (cirurgia3Started)
+        {
+            if (taskManager.timerAtual3 <= 0)
+            {
+                FailedMinigame();
+            }
+        }
+        if (cirurgia4Started)
+        {
+            if (taskManager.timerAtual4 <= 0)
             {
                 FailedMinigame();
             }

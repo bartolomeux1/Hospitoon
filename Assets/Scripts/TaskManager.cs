@@ -83,6 +83,8 @@ public class TaskManager : MonoBehaviour
     public bool objective1Completed4 = false;
     public bool objective2Completed4 = false;
 
+    public bool paciente4Proximo = false;
+
     public bool task1Completed = false;
     public bool task2Completed = false;
     public bool task3Completed = false;
@@ -195,11 +197,12 @@ public class TaskManager : MonoBehaviour
                 task3Completed = false;
                 paciente.proximoPaciente3 = false;
             }
-            if (paciente.proximoPaciente4 && PhotonNetwork.IsMasterClient)
+            if ((paciente.proximoPaciente4 && PhotonNetwork.IsMasterClient) || (paciente4Proximo && PhotonNetwork.IsMasterClient))
             {
                 photonView.RPC("StartMaca4Task", RpcTarget.All);
                 task4Completed = false;
                 paciente.proximoPaciente4 = false;
+                Debug.Log("Chamando StartMaca4Task");
             }
         }
     }
@@ -207,16 +210,16 @@ public class TaskManager : MonoBehaviour
     void StartMaca1Task()
     {
         double currentTime = PhotonNetwork.Time;
-        double taskStartTime = currentTime + Random.Range(5,15); // espera de 5/15 segundos
+        double taskStartTime = currentTime + Random.Range(1, 3); // espera de 5/15 segundos
 
         StartCoroutine(WaitAndExecuteTask(taskStartTime));
     }
     [PunRPC]
     void StartMaca2Task()
     {
-        Debug.Log("Chamando StartMaca2Task");
+        //Debug.Log("Chamando StartMaca2Task");
         double currentTime = PhotonNetwork.Time;
-        double taskStartTime = currentTime + Random.Range(3, 10); // espera de 3/10 segundos
+        double taskStartTime = currentTime + Random.Range(1, 3); // espera de 3/10 segundos
 
         StartCoroutine(WaitAndExecuteTask2(taskStartTime));
     }
@@ -224,15 +227,17 @@ public class TaskManager : MonoBehaviour
     void StartMaca3Task()
     {
         double currentTime = PhotonNetwork.Time;
-        double taskStartTime = currentTime + Random.Range(3, 3);
+        double taskStartTime = currentTime + Random.Range(1, 3);
 
         StartCoroutine(WaitAndExecuteTask3(taskStartTime));
     }
     [PunRPC]
     void StartMaca4Task()
     {
+        Debug.Log("Chamando StartMaca4Task");
         double currentTime = PhotonNetwork.Time;
-        double taskStartTime = currentTime + Random.Range(1, 2);
+        double taskStartTime = currentTime + Random.Range(2, 4);
+        paciente4Proximo = false;
 
         StartCoroutine(WaitAndExecuteTask4(taskStartTime));
     }
@@ -417,6 +422,7 @@ public class TaskManager : MonoBehaviour
             paciente.proximoPaciente3 = true;
 
             if(timerAtual3 <= 0)
+                Debug.Log("Subtraindo 2 pontos");   
                 game.SubPontuacao(2);
         }
     }
@@ -551,25 +557,25 @@ public class TaskManager : MonoBehaviour
         if (task1CompletedCouter > 3)
         {
             NewPaciente1();
-            task1CanceledCouter++;
+            //task1CanceledCouter++;
             timerMaca1 = +18;
         }
         if (task2CompletedCouter > 3)
         {
             NewPaciente2();
-            task2CanceledCouter++;
+            //task2CanceledCouter++;
             timerMaca2 = +18;
         }
         if (task3CompletedCouter > 3)
         {
             NewPaciente3();
-            task3CompletedCouter++;
+            //task3CompletedCouter++;
             timerMaca3 = +18;
         }
         if (task4CompletedCouter > 3)
         {
             NewPaciente4();
-            task4CompletedCouter++;
+            //task4CompletedCouter++;
             timerMaca4 = +18;
         }
         if ((task1CompletedCouter > 0)) 
@@ -720,6 +726,7 @@ public class TaskManager : MonoBehaviour
     public void NewPaciente3()
     {
         paciente3 = newPaciente3;
+        Debug.Log("NewPaciente3");
         task3CompletedCouter = 0;
     }
     public void NewPaciente4()

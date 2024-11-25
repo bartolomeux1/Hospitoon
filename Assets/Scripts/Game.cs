@@ -44,7 +44,7 @@ public class Game : MonoBehaviour
         pontuacaoGrande.SetActive(false);
         feedbackStatus = true;
 
-        maxTimer = 30f;
+        maxTimer = 60f;
        
 
         imageFill = sliderTime.fillRect.GetComponent<Image>();
@@ -66,7 +66,7 @@ public class Game : MonoBehaviour
     {
         if (isTimerRunning)
         {
-            timer = 30;
+            timer = 60;
             maxTimer -= Time.deltaTime;
 
             // Atualiza o valor do timer no texto
@@ -100,6 +100,7 @@ public class Game : MonoBehaviour
     public void SubPontuacao(int n)
     {
         pontuacao -= n;
+        Debug.Log("Subtraiu");
         return;
     }
     public void FeedBackStatus()

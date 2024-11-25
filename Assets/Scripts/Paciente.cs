@@ -144,6 +144,14 @@ public class Paciente : MonoBehaviour
                     {
                         sirurgiaMiniGame.cirurgia2Started = true;
                     }
+                    if (pacienteInt == 3)
+                    {
+                        sirurgiaMiniGame.cirurgia3Started = true;
+                    }
+                    if (pacienteInt == 4)
+                    {
+                        sirurgiaMiniGame.cirurgia4Started = true;
+                    }
                 }
             }
         }
@@ -212,6 +220,14 @@ public class Paciente : MonoBehaviour
             {
                 sirurgiaMiniGame.cirurgia2Started = true;
             }
+            if (pacienteInt == 3)
+            {
+                sirurgiaMiniGame.cirurgia3Started = true;
+            }
+            if (pacienteInt == 4)
+            {
+                sirurgiaMiniGame.cirurgia4Started = true;
+            }
         }
         if ((HassCirurgia) && (taskCompleted))
             text.SetActive(true);
@@ -238,7 +254,7 @@ public class Paciente : MonoBehaviour
                 game.AddPontuacao(1);
             return;
         }
-        else if (pacienteInt == 2)
+        if (pacienteInt == 2)
         {
             taskManager.task2Completed = true;
             proximoPaciente2 = true;
@@ -253,6 +269,43 @@ public class Paciente : MonoBehaviour
                 game.AddPontuacao(2);
 
             if (taskManager.timerAtual2 <= 3 && taskManager.timerAtual2 > 0)
+                game.AddPontuacao(1);
+            return;
+        }
+        if (pacienteInt == 3)
+        {
+            taskManager.task3Completed = true;
+            proximoPaciente3 = true;
+            taskManager.pauseTimer3 = true;
+            Debug.Log("Paciente3 proximo?");
+            Destroy(gameObject);
+
+            if (taskManager.timerAtual3 <= 20 && taskManager.timerAtual3 > 6)
+                game.AddPontuacao(3);
+
+            if (taskManager.timerAtual3 <= 6 && taskManager.timerAtual3 > 3)
+                game.AddPontuacao(2);
+
+            if (taskManager.timerAtual3 <= 3 && taskManager.timerAtual3 > 0)
+                game.AddPontuacao(1);
+            return;
+        }
+        if (pacienteInt == 4)
+        {
+            taskManager.task4Completed = true;
+            proximoPaciente4 = true;
+            taskManager.paciente4Proximo = true;
+            taskManager.pauseTimer4 = true;
+            Debug.Log("Paciente4 proximo?");
+            Destroy(gameObject);
+
+            if (taskManager.timerAtual4 <= 20 && taskManager.timerAtual4 > 6)
+                game.AddPontuacao(3);
+
+            if (taskManager.timerAtual4 <= 6 && taskManager.timerAtual4 > 3)
+                game.AddPontuacao(2);
+
+            if (taskManager.timerAtual4 <= 3 && taskManager.timerAtual4 > 0)
                 game.AddPontuacao(1);
             return;
         }
