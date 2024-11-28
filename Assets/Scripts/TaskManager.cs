@@ -569,7 +569,7 @@ public class TaskManager : MonoBehaviour
             //task3CompletedCouter++;
             timerMaca3 = +20;
         }
-        if (task4CompletedCouter >= 0)
+        if (task4CompletedCouter >= 3)
         {
             NewPaciente4();
             //task4CompletedCouter++;
@@ -730,6 +730,7 @@ public class TaskManager : MonoBehaviour
     {
         paciente4 = newPaciente4;
         task4CompletedCouter = 0;
+        Debug.Log("NewPaciente3");
     }
     public void BackuPaciente1()
     {
